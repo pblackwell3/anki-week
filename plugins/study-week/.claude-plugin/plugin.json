@@ -1,0 +1,7 @@
+{
+  "name": "study-week",
+  "description": "Plan a medical-school week: map each lecture to its study video(s) with runtimes, reserve daily Anki-review time, and stage pre-lecture study blocks into a 2-8 PM calendar window as proposed events. Emits a written plan doc + calendar events. Does not build Anki decks (that's anki-week).",
+  "version": "0.1.0",
+  "author": { "name": "pblackwell3", "url": "https://github.com/pblackwell3" },
+  "keywords": ["medical", "study", "anki", "boards-and-beyond", "calendar", "planning"]
+}

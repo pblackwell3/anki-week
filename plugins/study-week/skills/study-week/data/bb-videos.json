@@ -1,0 +1,2597 @@
+{
+  "source": "BoardsBeyond-Checklist-1P-2026_1.pdf",
+  "total_subjects": 22,
+  "total_videos": 496,
+  "subjects": {
+    "Anesthesia": {
+      "declared_videos": 4,
+      "declared_minutes": 75,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Inhaled Anesthetics",
+              "minutes": 25
+            },
+            {
+              "title": "Intravenous Anesthetics",
+              "minutes": 16
+            },
+            {
+              "title": "Local Anesthetics",
+              "minutes": 13
+            },
+            {
+              "title": "Neuromuscular Blockers",
+              "minutes": 19
+            }
+          ]
+        }
+      },
+      "parsed_videos": 4,
+      "parsed_minutes": 73,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 73,
+          "header": 75
+        }
+      }
+    },
+    "Basic Pharmacology": {
+      "declared_videos": 5,
+      "declared_minutes": 86,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Enzymes",
+              "minutes": 14
+            },
+            {
+              "title": "Enzyme Inhibitors",
+              "minutes": 8
+            },
+            {
+              "title": "Dose-Response",
+              "minutes": 21
+            },
+            {
+              "title": "Drug Elimination",
+              "minutes": 17
+            },
+            {
+              "title": "Pharmacokinetics",
+              "minutes": 27
+            }
+          ]
+        }
+      },
+      "parsed_videos": 5,
+      "parsed_minutes": 87,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 87,
+          "header": 86
+        }
+      }
+    },
+    "Behavioral Science": {
+      "declared_videos": 9,
+      "declared_minutes": 130,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Ethics Principles",
+              "minutes": 11
+            },
+            {
+              "title": "Informed Consent",
+              "minutes": 17
+            },
+            {
+              "title": "Confidentiality",
+              "minutes": 11
+            },
+            {
+              "title": "Decision-Making Capacity",
+              "minutes": 8
+            },
+            {
+              "title": "Public Health",
+              "minutes": 10
+            },
+            {
+              "title": "Quality and Safety",
+              "minutes": 30
+            },
+            {
+              "title": "The Healthy Patient",
+              "minutes": 13
+            },
+            {
+              "title": "Geriatrics",
+              "minutes": 9
+            },
+            {
+              "title": "Pediatrics",
+              "minutes": 22
+            }
+          ]
+        }
+      },
+      "parsed_videos": 9,
+      "parsed_minutes": 131,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 131,
+          "header": 130
+        }
+      }
+    },
+    "Biochemistry": {
+      "declared_videos": 28,
+      "declared_minutes": 546,
+      "sections": {
+        "Molecular Biochemistry": {
+          "videos": [
+            {
+              "title": "DNA Structure",
+              "minutes": 13
+            },
+            {
+              "title": "Purine Metabolism",
+              "minutes": 19
+            },
+            {
+              "title": "Pyrimidine Metabolism",
+              "minutes": 22
+            }
+          ]
+        },
+        "Metabolism": {
+          "videos": [
+            {
+              "title": "Glucose",
+              "minutes": 8
+            },
+            {
+              "title": "Glycolysis",
+              "minutes": 31
+            },
+            {
+              "title": "Gluconeogenesis",
+              "minutes": 17
+            },
+            {
+              "title": "Glycogen",
+              "minutes": 21
+            },
+            {
+              "title": "HMP Shunt",
+              "minutes": 14
+            },
+            {
+              "title": "Fructose and Galactose",
+              "minutes": 12
+            },
+            {
+              "title": "Pyruvate Dehydrogenase",
+              "minutes": 18
+            },
+            {
+              "title": "TCA Cycle",
+              "minutes": 14
+            },
+            {
+              "title": "Electron Transport Chain",
+              "minutes": 21
+            },
+            {
+              "title": "Fatty Acids",
+              "minutes": 27
+            },
+            {
+              "title": "Ketone Bodies",
+              "minutes": 8
+            },
+            {
+              "title": "Ethanol Metabolism",
+              "minutes": 19
+            },
+            {
+              "title": "Exercise and Starvation",
+              "minutes": 22
+            },
+            {
+              "title": "Inborn Errors of Metabolism",
+              "minutes": 21
+            }
+          ]
+        },
+        "Amino Acids": {
+          "videos": [
+            {
+              "title": "Amino Acids",
+              "minutes": 18
+            },
+            {
+              "title": "Phenylalanine and Tyrosine",
+              "minutes": 25
+            },
+            {
+              "title": "Other Amino Acids",
+              "minutes": 19
+            },
+            {
+              "title": "Ammonia",
+              "minutes": 18
+            }
+          ]
+        },
+        "Vitamins": {
+          "videos": [
+            {
+              "title": "B Vitamins",
+              "minutes": 23
+            },
+            {
+              "title": "B12 and Folate",
+              "minutes": 20
+            },
+            {
+              "title": "Other Vitamins",
+              "minutes": 33
+            }
+          ]
+        },
+        "Lipids": {
+          "videos": [
+            {
+              "title": "Lipid Metabolism",
+              "minutes": 20
+            },
+            {
+              "title": "Hyperlipidemia",
+              "minutes": 10
+            },
+            {
+              "title": "Lipid Drugs",
+              "minutes": 23
+            }
+          ]
+        },
+        "Other Topics": {
+          "videos": [
+            {
+              "title": "Lysosomal Storage Diseases",
+              "minutes": 31
+            }
+          ]
+        }
+      },
+      "parsed_videos": 28,
+      "parsed_minutes": 547,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 547,
+          "header": 546
+        }
+      }
+    },
+    "Biostats/Epi": {
+      "declared_videos": 12,
+      "declared_minutes": 213,
+      "sections": {
+        "Biostatistics": {
+          "videos": [
+            {
+              "title": "Statistics",
+              "minutes": 18
+            },
+            {
+              "title": "Hypothesis Testing",
+              "minutes": 22
+            },
+            {
+              "title": "Tests of Significance",
+              "minutes": 15
+            },
+            {
+              "title": "Correlations",
+              "minutes": 8
+            }
+          ]
+        },
+        "Epidemiology": {
+          "videos": [
+            {
+              "title": "Study Designs",
+              "minutes": 19
+            },
+            {
+              "title": "Risk Quantification",
+              "minutes": 20
+            },
+            {
+              "title": "Sensitivity and Specificity",
+              "minutes": 21
+            },
+            {
+              "title": "Predictive Value",
+              "minutes": 13
+            },
+            {
+              "title": "Diagnostic Tests",
+              "minutes": 17
+            },
+            {
+              "title": "Bias",
+              "minutes": 23
+            },
+            {
+              "title": "Clinical Trials",
+              "minutes": 32
+            },
+            {
+              "title": "Evidence-based Medicine",
+              "minutes": 10
+            }
+          ]
+        }
+      },
+      "parsed_videos": 12,
+      "parsed_minutes": 218,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 218,
+          "header": 213
+        }
+      }
+    },
+    "Cardiology": {
+      "declared_videos": 47,
+      "declared_minutes": 974,
+      "sections": {
+        "Anatomy and Physiology": {
+          "videos": [
+            {
+              "title": "Cardiac Anatomy",
+              "minutes": 16
+            },
+            {
+              "title": "Cardiac Physiology",
+              "minutes": 28
+            },
+            {
+              "title": "CV Response to Exercise",
+              "minutes": 12
+            },
+            {
+              "title": "Blood Flow Mechanics",
+              "minutes": 32
+            },
+            {
+              "title": "Regulation of Blood Pressure",
+              "minutes": 24
+            },
+            {
+              "title": "PV Loops",
+              "minutes": 20
+            },
+            {
+              "title": "Wiggers\u2019 Diagram",
+              "minutes": 12
+            },
+            {
+              "title": "Venous Pressure Tracings",
+              "minutes": 10
+            },
+            {
+              "title": "Starling Curve",
+              "minutes": 19
+            }
+          ]
+        },
+        "Cardiac Ischemia": {
+          "videos": [
+            {
+              "title": "Cardiac Ischemia I",
+              "minutes": 18
+            },
+            {
+              "title": "Cardiac Ischemia II",
+              "minutes": 20
+            },
+            {
+              "title": "Atherosclerosis",
+              "minutes": 17
+            },
+            {
+              "title": "STEMI",
+              "minutes": 19
+            },
+            {
+              "title": "Unstable Angina/NSTEMI",
+              "minutes": 10
+            },
+            {
+              "title": "Stable Angina",
+              "minutes": 25
+            }
+          ]
+        },
+        "EKGs": {
+          "videos": [
+            {
+              "title": "EKG Basics",
+              "minutes": 27
+            },
+            {
+              "title": "High Yield EKGs",
+              "minutes": 18
+            }
+          ]
+        },
+        "Arrhythmias": {
+          "videos": [
+            {
+              "title": "Cardiac Action Potentials",
+              "minutes": 21
+            },
+            {
+              "title": "AV and Bundle Branch Blocks",
+              "minutes": 26
+            },
+            {
+              "title": "Atrial Fibrillation and Flutter",
+              "minutes": 29
+            },
+            {
+              "title": "Paroxysmal supraventricular tachycardia",
+              "minutes": 13
+            },
+            {
+              "title": "WPW",
+              "minutes": 10
+            },
+            {
+              "title": "Antiarrhythmic Drugs I",
+              "minutes": 22
+            },
+            {
+              "title": "Antiarrhythmic Drugs II",
+              "minutes": 17
+            },
+            {
+              "title": "Antiarrhythmic Drugs III",
+              "minutes": 18
+            }
+          ]
+        },
+        "Cardiac Auscultation": {
+          "videos": [
+            {
+              "title": "Heart Murmurs",
+              "minutes": 29
+            },
+            {
+              "title": "Heart Sounds",
+              "minutes": 21
+            }
+          ]
+        },
+        "Heart Failure": {
+          "videos": [
+            {
+              "title": "Heart Failure Basics",
+              "minutes": 26
+            },
+            {
+              "title": "Systolic and Diastolic Heart Failure",
+              "minutes": 21
+            },
+            {
+              "title": "Restrictive Cardiomyopathy",
+              "minutes": 14
+            },
+            {
+              "title": "Acute Heart Failure",
+              "minutes": 28
+            },
+            {
+              "title": "Chronic Heart Failure",
+              "minutes": 25
+            }
+          ]
+        },
+        "The Developing Heart": {
+          "videos": [
+            {
+              "title": "Cardiac Embryology",
+              "minutes": 20
+            },
+            {
+              "title": "Shunts",
+              "minutes": 24
+            },
+            {
+              "title": "Cyanotic Congenital Heart Disease",
+              "minutes": 24
+            },
+            {
+              "title": "Coarctation of the Aorta",
+              "minutes": 16
+            }
+          ]
+        },
+        "Hypertension": {
+          "videos": [
+            {
+              "title": "Hypertension",
+              "minutes": 14
+            },
+            {
+              "title": "Secondary Hypertension",
+              "minutes": 23
+            },
+            {
+              "title": "Antihypertensives I",
+              "minutes": 26
+            },
+            {
+              "title": "Antihypertensives II",
+              "minutes": 20
+            }
+          ]
+        },
+        "Other Cardiovascular Topics": {
+          "videos": [
+            {
+              "title": "Valve Disease",
+              "minutes": 38
+            },
+            {
+              "title": "Shock",
+              "minutes": 26
+            },
+            {
+              "title": "Pericardial Disease",
+              "minutes": 37
+            },
+            {
+              "title": "Aortic Disease",
+              "minutes": 16
+            },
+            {
+              "title": "Cardiac Tumors",
+              "minutes": 9
+            },
+            {
+              "title": "Hypertrophic Cardiomyopathy",
+              "minutes": 23
+            },
+            {
+              "title": "Infective Endocarditis",
+              "minutes": 24
+            }
+          ]
+        }
+      },
+      "parsed_videos": 47,
+      "parsed_minutes": 987,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 987,
+          "header": 974
+        }
+      }
+    },
+    "Cell Biology": {
+      "declared_videos": 14,
+      "declared_minutes": 200,
+      "sections": {
+        "Molecular Biology": {
+          "videos": [
+            {
+              "title": "DNA Replication",
+              "minutes": 17
+            },
+            {
+              "title": "DNA Mutations",
+              "minutes": 15
+            },
+            {
+              "title": "DNA Repair",
+              "minutes": 17
+            },
+            {
+              "title": "Transcription",
+              "minutes": 23
+            },
+            {
+              "title": "Translation",
+              "minutes": 20
+            }
+          ]
+        },
+        "Laboratory Techniques": {
+          "videos": [
+            {
+              "title": "PCR",
+              "minutes": 5
+            },
+            {
+              "title": "Blotting",
+              "minutes": 8
+            },
+            {
+              "title": "Flow Cytometry",
+              "minutes": 6
+            },
+            {
+              "title": "ELISA",
+              "minutes": 9
+            },
+            {
+              "title": "Microarrays and FISH",
+              "minutes": 5
+            }
+          ]
+        },
+        "Cellular Biology": {
+          "videos": [
+            {
+              "title": "Cell Cycle",
+              "minutes": 14
+            },
+            {
+              "title": "Cell Structure",
+              "minutes": 21
+            },
+            {
+              "title": "Cytoskeleton",
+              "minutes": 15
+            },
+            {
+              "title": "Connective Tissue",
+              "minutes": 25
+            }
+          ]
+        }
+      },
+      "parsed_videos": 14,
+      "parsed_minutes": 200
+    },
+    "Dermatology": {
+      "declared_videos": 11,
+      "declared_minutes": 116,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Skin",
+              "minutes": 11
+            },
+            {
+              "title": "Epithelial Cells",
+              "minutes": 8
+            },
+            {
+              "title": "Skin Disorders I",
+              "minutes": 14
+            },
+            {
+              "title": "Skin Disorders II",
+              "minutes": 8
+            },
+            {
+              "title": "Pigment Disorders",
+              "minutes": 5
+            },
+            {
+              "title": "Vascular Lesions",
+              "minutes": 8
+            },
+            {
+              "title": "Skin Infections",
+              "minutes": 8
+            },
+            {
+              "title": "Blistering Disorders",
+              "minutes": 8
+            },
+            {
+              "title": "Hypersensitivity Disorders",
+              "minutes": 12
+            },
+            {
+              "title": "Skin Cancer",
+              "minutes": 13
+            },
+            {
+              "title": "Neurocutaneous Disorders",
+              "minutes": 15
+            }
+          ]
+        }
+      },
+      "parsed_videos": 11,
+      "parsed_minutes": 110,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 110,
+          "header": 116
+        }
+      }
+    },
+    "Endocrinology": {
+      "declared_videos": 30,
+      "declared_minutes": 688,
+      "sections": {
+        "Thyroid": {
+          "videos": [
+            {
+              "title": "Thyroid Anatomy & Physiology",
+              "minutes": 15
+            },
+            {
+              "title": "Thyroid Hormone Synthesis & Labs",
+              "minutes": 25
+            },
+            {
+              "title": "Hyperthyroidism",
+              "minutes": 34
+            },
+            {
+              "title": "Hypothyroidism and Thyroiditis",
+              "minutes": 27
+            },
+            {
+              "title": "Thyroid Cancer",
+              "minutes": 15
+            }
+          ]
+        },
+        "Adrenals": {
+          "videos": [
+            {
+              "title": "Adrenal Glands",
+              "minutes": 26
+            },
+            {
+              "title": "Cushing's Syndrome",
+              "minutes": 25
+            },
+            {
+              "title": "Adrenal Insufficiency",
+              "minutes": 21
+            },
+            {
+              "title": "Hyperaldosteronism",
+              "minutes": 20
+            },
+            {
+              "title": "Adrenal Tumors",
+              "minutes": 15
+            },
+            {
+              "title": "Congenital Adrenal Hyperplasia",
+              "minutes": 21
+            }
+          ]
+        },
+        "Pancreas": {
+          "videos": [
+            {
+              "title": "Insulin",
+              "minutes": 24
+            },
+            {
+              "title": "Glucagon & Hypoglycemia",
+              "minutes": 22
+            },
+            {
+              "title": "Type I Diabetes",
+              "minutes": 24
+            },
+            {
+              "title": "Type II Diabetes",
+              "minutes": 24
+            },
+            {
+              "title": "Insulin Medications",
+              "minutes": 16
+            },
+            {
+              "title": "Treatment of Diabetes",
+              "minutes": 29
+            }
+          ]
+        },
+        "Reproductive": {
+          "videos": [
+            {
+              "title": "Reproductive Hormones",
+              "minutes": 23
+            },
+            {
+              "title": "Male Reproductive Hormones",
+              "minutes": 27
+            },
+            {
+              "title": "Female Reproductive Hormones",
+              "minutes": 17
+            },
+            {
+              "title": "Contraceptives",
+              "minutes": 15
+            },
+            {
+              "title": "Menstrual Cycle",
+              "minutes": 23
+            },
+            {
+              "title": "Primary Amenorrhea",
+              "minutes": 27
+            },
+            {
+              "title": "Secondary Amenorrhea",
+              "minutes": 29
+            }
+          ]
+        },
+        "Other Topics": {
+          "videos": [
+            {
+              "title": "Pituitary Anatomy & Physiology",
+              "minutes": 24
+            },
+            {
+              "title": "Pituitary Pathology",
+              "minutes": 25
+            },
+            {
+              "title": "Parathyroid Glands",
+              "minutes": 16
+            },
+            {
+              "title": "Parathyroid Pathology",
+              "minutes": 30
+            },
+            {
+              "title": "MEN Syndromes",
+              "minutes": 11
+            },
+            {
+              "title": "Signaling Pathways",
+              "minutes": 20
+            }
+          ]
+        }
+      },
+      "parsed_videos": 30,
+      "parsed_minutes": 670,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 670,
+          "header": 688
+        }
+      }
+    },
+    "Gastroenterology": {
+      "declared_videos": 28,
+      "declared_minutes": 531,
+      "sections": {
+        "Anatomy": {
+          "videos": [
+            {
+              "title": "Gastrointestinal Embryology",
+              "minutes": 28
+            },
+            {
+              "title": "Gastrointestinal Anatomy",
+              "minutes": 11
+            },
+            {
+              "title": "Gastrointestinal Blood Supply",
+              "minutes": 18
+            },
+            {
+              "title": "Gastrointestinal Tract",
+              "minutes": 19
+            },
+            {
+              "title": "Liver, Gallbladder, and Pancreas",
+              "minutes": 12
+            },
+            {
+              "title": "Salivary Glands",
+              "minutes": 14
+            },
+            {
+              "title": "Hernias",
+              "minutes": 19
+            }
+          ]
+        },
+        "GI Physiology": {
+          "videos": [
+            {
+              "title": "Bile",
+              "minutes": 17
+            },
+            {
+              "title": "Bilirubin",
+              "minutes": 29
+            },
+            {
+              "title": "Gastrointestinal Secretions",
+              "minutes": 12
+            },
+            {
+              "title": "Gastrointestinal Hormones",
+              "minutes": 24
+            },
+            {
+              "title": "Exocrine Pancreas",
+              "minutes": 15
+            }
+          ]
+        },
+        "Clinical Gastroenterology": {
+          "videos": [
+            {
+              "title": "Esophageal Disorders",
+              "minutes": 23
+            },
+            {
+              "title": "Liver Disease",
+              "minutes": 22
+            },
+            {
+              "title": "Cirrhosis",
+              "minutes": 23
+            },
+            {
+              "title": "Liver Tumors",
+              "minutes": 10
+            },
+            {
+              "title": "Wilson\u2019s Disease and Hemochromatosis",
+              "minutes": 15
+            },
+            {
+              "title": "Gallstones",
+              "minutes": 20
+            },
+            {
+              "title": "Biliary Disorders",
+              "minutes": 14
+            },
+            {
+              "title": "Gastric Disorders",
+              "minutes": 32
+            },
+            {
+              "title": "Malabsorption",
+              "minutes": 28
+            },
+            {
+              "title": "Acute Pancreatitis",
+              "minutes": 22
+            },
+            {
+              "title": "Chronic Pancreatitis & Pancreatic Cancer",
+              "minutes": 11
+            },
+            {
+              "title": "Intestinal Disorders",
+              "minutes": 23
+            },
+            {
+              "title": "Inflammatory Bowel Disease",
+              "minutes": 20
+            },
+            {
+              "title": "Colon Cancer",
+              "minutes": 24
+            },
+            {
+              "title": "Carcinoid Tumors",
+              "minutes": 7
+            },
+            {
+              "title": "Gastrointestinal Pharmacology",
+              "minutes": 22
+            }
+          ]
+        }
+      },
+      "parsed_videos": 28,
+      "parsed_minutes": 534,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 534,
+          "header": 531
+        }
+      }
+    },
+    "Genetics": {
+      "declared_videos": 12,
+      "declared_minutes": 146,
+      "sections": {
+        "Genetic Concepts": {
+          "videos": [
+            {
+              "title": "Genetic Principles",
+              "minutes": 24
+            },
+            {
+              "title": "Gene Mapping",
+              "minutes": 12
+            },
+            {
+              "title": "Meiosis",
+              "minutes": 16
+            },
+            {
+              "title": "Hardy-Weinberg Law",
+              "minutes": 12
+            },
+            {
+              "title": "Pedigrees",
+              "minutes": 18
+            },
+            {
+              "title": "Imprinting",
+              "minutes": 6
+            }
+          ]
+        },
+        "Genetic Disorders": {
+          "videos": [
+            {
+              "title": "Down Syndrome",
+              "minutes": 14
+            },
+            {
+              "title": "Trisomies",
+              "minutes": 7
+            },
+            {
+              "title": "Muscular Dystrophy",
+              "minutes": 9
+            },
+            {
+              "title": "Trinucleotide Repeat Disorders",
+              "minutes": 10
+            },
+            {
+              "title": "Deletion Syndromes",
+              "minutes": 5
+            },
+            {
+              "title": "Turner and Klinefelter Syndromes",
+              "minutes": 13
+            }
+          ]
+        }
+      },
+      "parsed_videos": 12,
+      "parsed_minutes": 146
+    },
+    "Hematology": {
+      "declared_videos": 32,
+      "declared_minutes": 617,
+      "sections": {
+        "Hemostasis": {
+          "videos": [
+            {
+              "title": "Coagulation I",
+              "minutes": 24
+            },
+            {
+              "title": "Coagulation II",
+              "minutes": 20
+            },
+            {
+              "title": "Platelets",
+              "minutes": 21
+            },
+            {
+              "title": "Hypercoagulable States",
+              "minutes": 17
+            },
+            {
+              "title": "Coagulopathies",
+              "minutes": 17
+            },
+            {
+              "title": "Platelet Disorders",
+              "minutes": 17
+            },
+            {
+              "title": "Thrombotic Microangiopathy",
+              "minutes": 18
+            },
+            {
+              "title": "Antiplatelets",
+              "minutes": 18
+            },
+            {
+              "title": "Anticoagulants",
+              "minutes": 28
+            }
+          ]
+        },
+        "Red Blood Cells": {
+          "videos": [
+            {
+              "title": "Hemolysis Basics",
+              "minutes": 21
+            },
+            {
+              "title": "Extrinsic Hemolysis",
+              "minutes": 17
+            },
+            {
+              "title": "Intrinsic Hemolysis",
+              "minutes": 24
+            },
+            {
+              "title": "Microcytic Anemias I",
+              "minutes": 22
+            },
+            {
+              "title": "Microcytic Anemias II",
+              "minutes": 17
+            },
+            {
+              "title": "Alpha Thalassemias",
+              "minutes": 19
+            },
+            {
+              "title": "Beta Thalassemias",
+              "minutes": 17
+            },
+            {
+              "title": "Sickle Cell Disease",
+              "minutes": 23
+            },
+            {
+              "title": "Other Anemias",
+              "minutes": 23
+            },
+            {
+              "title": "Blood Groups",
+              "minutes": 21
+            },
+            {
+              "title": "Porphyrias",
+              "minutes": 14
+            }
+          ]
+        },
+        "White Blood Cells": {
+          "videos": [
+            {
+              "title": "Acute Leukemias",
+              "minutes": 20
+            },
+            {
+              "title": "Chronic Leukemias",
+              "minutes": 18
+            },
+            {
+              "title": "Hodgkin Lymphoma",
+              "minutes": 12
+            },
+            {
+              "title": "Non-Hodgkin Lymphoma",
+              "minutes": 24
+            },
+            {
+              "title": "Plasma Cell Disorders",
+              "minutes": 22
+            },
+            {
+              "title": "Amyloidosis",
+              "minutes": 16
+            },
+            {
+              "title": "Myeloproliferative Disorders",
+              "minutes": 22
+            }
+          ]
+        },
+        "Cancer Drugs": {
+          "videos": [
+            {
+              "title": "Antimetabolites",
+              "minutes": 19
+            },
+            {
+              "title": "Alkylating and Platinum Agents",
+              "minutes": 11
+            },
+            {
+              "title": "Antitumor Antibiotics and Topoisomerase Drugs",
+              "minutes": 11
+            },
+            {
+              "title": "Microtubule Inhibitors",
+              "minutes": 11
+            },
+            {
+              "title": "Other Cancer Drugs",
+              "minutes": 21
+            }
+          ]
+        }
+      },
+      "parsed_videos": 32,
+      "parsed_minutes": 605,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 605,
+          "header": 617
+        }
+      }
+    },
+    "Immunology": {
+      "declared_videos": 19,
+      "declared_minutes": 361,
+      "sections": {
+        "Basic Immunology": {
+          "videos": [
+            {
+              "title": "Innate Immunity",
+              "minutes": 36
+            },
+            {
+              "title": "T-cells",
+              "minutes": 30
+            },
+            {
+              "title": "B-cells",
+              "minutes": 31
+            },
+            {
+              "title": "The Complement System",
+              "minutes": 21
+            },
+            {
+              "title": "Lymph Nodes and Spleen",
+              "minutes": 16
+            }
+          ]
+        },
+        "Clinical Immunology": {
+          "videos": [
+            {
+              "title": "Hypersensitivity",
+              "minutes": 21
+            },
+            {
+              "title": "Transplants",
+              "minutes": 16
+            },
+            {
+              "title": "Immune Deficiency Syndromes",
+              "minutes": 36
+            }
+          ]
+        },
+        "Pharmacology": {
+          "videos": [
+            {
+              "title": "Glucocorticoids and NSAIDs",
+              "minutes": 15
+            },
+            {
+              "title": "Immunosuppressive Drugs",
+              "minutes": 20
+            }
+          ]
+        },
+        "Autoimmune Disorders": {
+          "videos": [
+            {
+              "title": "Systemic Lupus Erythematosus",
+              "minutes": 15
+            },
+            {
+              "title": "Rheumatoid Arthritis",
+              "minutes": 17
+            },
+            {
+              "title": "Scleroderma",
+              "minutes": 10
+            },
+            {
+              "title": "Sjogren\u2019s Syndrome",
+              "minutes": 10
+            },
+            {
+              "title": "Vasculitis",
+              "minutes": 25
+            },
+            {
+              "title": "Seronegative Spondyloarthritis",
+              "minutes": 15
+            }
+          ]
+        },
+        "Inflammatory Disorders": {
+          "videos": [
+            {
+              "title": "Gout",
+              "minutes": 14
+            },
+            {
+              "title": "Gout Drugs",
+              "minutes": 9
+            },
+            {
+              "title": "CPPD",
+              "minutes": 7
+            }
+          ]
+        }
+      },
+      "parsed_videos": 19,
+      "parsed_minutes": 364,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 364,
+          "header": 361
+        }
+      }
+    },
+    "Infectious Disease": {
+      "declared_videos": 36,
+      "declared_minutes": 699,
+      "sections": {
+        "Basics of Microbiology": {
+          "videos": [
+            {
+              "title": "Bacteria",
+              "minutes": 22
+            },
+            {
+              "title": "Shapes and Stains",
+              "minutes": 12
+            },
+            {
+              "title": "Bacterial Culture",
+              "minutes": 15
+            },
+            {
+              "title": "Special Growth Requirements",
+              "minutes": 10
+            },
+            {
+              "title": "Virulence",
+              "minutes": 29
+            },
+            {
+              "title": "Growth and Genetics",
+              "minutes": 16
+            },
+            {
+              "title": "Bacterial Identification",
+              "minutes": 17
+            }
+          ]
+        },
+        "Bacteria": {
+          "videos": [
+            {
+              "title": "Staphylococci",
+              "minutes": 18
+            },
+            {
+              "title": "Streptococci",
+              "minutes": 21
+            },
+            {
+              "title": "Other Gram Positives",
+              "minutes": 25
+            },
+            {
+              "title": "Gram Negative Rods",
+              "minutes": 30
+            },
+            {
+              "title": "Other Gram Negatives",
+              "minutes": 27
+            },
+            {
+              "title": "Spirochetes",
+              "minutes": 15
+            },
+            {
+              "title": "Zoonotic Infections",
+              "minutes": 16
+            },
+            {
+              "title": "Mycobacteria",
+              "minutes": 11
+            }
+          ]
+        },
+        "Antibiotics": {
+          "videos": [
+            {
+              "title": "Penicillins",
+              "minutes": 23
+            },
+            {
+              "title": "Beta Lactams",
+              "minutes": 17
+            },
+            {
+              "title": "Sulfonamides",
+              "minutes": 14
+            },
+            {
+              "title": "Protein Synthesis Inhibitors",
+              "minutes": 21
+            },
+            {
+              "title": "Other Antibiotics",
+              "minutes": 16
+            }
+          ]
+        },
+        "Fungi": {
+          "videos": [
+            {
+              "title": "Fungal Pneumonias",
+              "minutes": 16
+            },
+            {
+              "title": "Fungal Skin Infections",
+              "minutes": 10
+            },
+            {
+              "title": "Opportunistic Fungal Infections",
+              "minutes": 24
+            },
+            {
+              "title": "Antifungal Drugs",
+              "minutes": 14
+            }
+          ]
+        },
+        "Parasites and Helminths": {
+          "videos": [
+            {
+              "title": "Malaria",
+              "minutes": 14
+            },
+            {
+              "title": "Protozoa",
+              "minutes": 29
+            },
+            {
+              "title": "Helminths",
+              "minutes": 29
+            }
+          ]
+        },
+        "Viruses": {
+          "videos": [
+            {
+              "title": "Virus Structures",
+              "minutes": 18
+            },
+            {
+              "title": "DNA Viruses",
+              "minutes": 18
+            },
+            {
+              "title": "Herpes Viruses",
+              "minutes": 24
+            },
+            {
+              "title": "RNA Viruses",
+              "minutes": 43
+            },
+            {
+              "title": "Viral Hepatitis",
+              "minutes": 26
+            },
+            {
+              "title": "HIV",
+              "minutes": 19
+            },
+            {
+              "title": "HIV CNS Infections",
+              "minutes": 5
+            },
+            {
+              "title": "HIV Drugs",
+              "minutes": 16
+            },
+            {
+              "title": "Antiviral Drugs",
+              "minutes": 15
+            }
+          ]
+        }
+      },
+      "parsed_videos": 36,
+      "parsed_minutes": 695,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 695,
+          "header": 699
+        }
+      }
+    },
+    "Musculoskeletal": {
+      "declared_videos": 20,
+      "declared_minutes": 369,
+      "sections": {
+        "Anatomy and Orthopedics": {
+          "videos": [
+            {
+              "title": "Knee",
+              "minutes": 24
+            },
+            {
+              "title": "Shoulder and Elbow",
+              "minutes": 18
+            },
+            {
+              "title": "Brachial Plexus",
+              "minutes": 19
+            },
+            {
+              "title": "Wrist",
+              "minutes": 15
+            },
+            {
+              "title": "Hand",
+              "minutes": 18
+            },
+            {
+              "title": "Lumbosacral Plexus",
+              "minutes": 19
+            },
+            {
+              "title": "Lumbar Radiculopathy",
+              "minutes": 13
+            },
+            {
+              "title": "Hip",
+              "minutes": 15
+            }
+          ]
+        },
+        "Cell Biology": {
+          "videos": [
+            {
+              "title": "Skeletal Muscle",
+              "minutes": 27
+            },
+            {
+              "title": "Cardiac Muscle",
+              "minutes": 10
+            },
+            {
+              "title": "Smooth Muscle",
+              "minutes": 21
+            },
+            {
+              "title": "Bone",
+              "minutes": 21
+            }
+          ]
+        },
+        "Pathology": {
+          "videos": [
+            {
+              "title": "Bone Disorders",
+              "minutes": 24
+            },
+            {
+              "title": "Osteoporosis",
+              "minutes": 14
+            },
+            {
+              "title": "Osteoporosis Drugs",
+              "minutes": 12
+            },
+            {
+              "title": "Benign Bone Tumors",
+              "minutes": 21
+            },
+            {
+              "title": "Malignent Bone Tumors",
+              "minutes": 10
+            },
+            {
+              "title": "Arthritis",
+              "minutes": 16
+            },
+            {
+              "title": "Muscle Disorders",
+              "minutes": 15
+            },
+            {
+              "title": "Common Musculoskeletal Conditions",
+              "minutes": 15
+            }
+          ]
+        }
+      },
+      "parsed_videos": 20,
+      "parsed_minutes": 347,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 347,
+          "header": 369
+        }
+      }
+    },
+    "Neurology": {
+      "declared_videos": 50,
+      "declared_minutes": 1037,
+      "sections": {
+        "Introduction to Neurology": {
+          "videos": [
+            {
+              "title": "Cells of the Nervous System",
+              "minutes": 22
+            },
+            {
+              "title": "Nerve Damage",
+              "minutes": 16
+            },
+            {
+              "title": "Blood Brain Barrier",
+              "minutes": 12
+            },
+            {
+              "title": "Neurotransmitters",
+              "minutes": 18
+            },
+            {
+              "title": "Dermatomes and Reflexes",
+              "minutes": 18
+            },
+            {
+              "title": "Brain Injury",
+              "minutes": 15
+            }
+          ]
+        },
+        "Nervous System Structures": {
+          "videos": [
+            {
+              "title": "Cerebral Cortex",
+              "minutes": 19
+            },
+            {
+              "title": "Spinal Cord",
+              "minutes": 30
+            },
+            {
+              "title": "Spinal Cord Syndromes",
+              "minutes": 30
+            },
+            {
+              "title": "Brainstem",
+              "minutes": 30
+            },
+            {
+              "title": "Rules of 4s",
+              "minutes": 15
+            },
+            {
+              "title": "Cranial Nerves I",
+              "minutes": 21
+            },
+            {
+              "title": "Cranial Nerves II",
+              "minutes": 21
+            },
+            {
+              "title": "Auditory System",
+              "minutes": 15
+            },
+            {
+              "title": "Vestibular System",
+              "minutes": 17
+            },
+            {
+              "title": "Thalamus, Hypothalamus, Limbic System",
+              "minutes": 25
+            },
+            {
+              "title": "Cerebellum",
+              "minutes": 22
+            },
+            {
+              "title": "Basal Ganglia",
+              "minutes": 20
+            },
+            {
+              "title": "Ventricles and Sinuses",
+              "minutes": 22
+            }
+          ]
+        },
+        "Neurovascular Disorders": {
+          "videos": [
+            {
+              "title": "Cerebral Strokes",
+              "minutes": 30
+            },
+            {
+              "title": "Vertebral Basilar Stroke Syndromes",
+              "minutes": 19
+            },
+            {
+              "title": "Intracranial Aneurysms",
+              "minutes": 19
+            },
+            {
+              "title": "Intracranial Bleeding",
+              "minutes": 23
+            },
+            {
+              "title": "Herniation Syndromes",
+              "minutes": 18
+            },
+            {
+              "title": "Treatment of TIA/Stroke",
+              "minutes": 19
+            }
+          ]
+        },
+        "Autonomic Nervous System": {
+          "videos": [
+            {
+              "title": "Autonomic Nervous System I",
+              "minutes": 20
+            },
+            {
+              "title": "Autonomic Nervous System II",
+              "minutes": 29
+            },
+            {
+              "title": "Autonomic Receptors",
+              "minutes": 20
+            },
+            {
+              "title": "Adrenergic Drugs I",
+              "minutes": 21
+            },
+            {
+              "title": "Adrenergic Drugs II",
+              "minutes": 23
+            },
+            {
+              "title": "Cholinergic Drugs",
+              "minutes": 20
+            },
+            {
+              "title": "Cholinergic Toxidromes",
+              "minutes": 11
+            }
+          ]
+        },
+        "Other Neurology Topics": {
+          "videos": [
+            {
+              "title": "Meningitis I",
+              "minutes": 18
+            },
+            {
+              "title": "Meningitis II",
+              "minutes": 21
+            },
+            {
+              "title": "Seizures",
+              "minutes": 23
+            },
+            {
+              "title": "Anticonvulsants I",
+              "minutes": 23
+            },
+            {
+              "title": "Anticonvulsants II",
+              "minutes": 15
+            },
+            {
+              "title": "Neuroembryology",
+              "minutes": 29
+            },
+            {
+              "title": "Delirium",
+              "minutes": 12
+            },
+            {
+              "title": "Dementia",
+              "minutes": 28
+            },
+            {
+              "title": "Demyelinating Disease",
+              "minutes": 18
+            },
+            {
+              "title": "Multiple Sclerosis",
+              "minutes": 20
+            },
+            {
+              "title": "Headaches",
+              "minutes": 21
+            },
+            {
+              "title": "Adult Brain Tumors",
+              "minutes": 17
+            },
+            {
+              "title": "Childhood Brain Tumors",
+              "minutes": 17
+            },
+            {
+              "title": "Parkinson Disease",
+              "minutes": 26
+            },
+            {
+              "title": "Movement Disorders",
+              "minutes": 14
+            },
+            {
+              "title": "Sleep Physiology",
+              "minutes": 16
+            },
+            {
+              "title": "Sleep Disorders",
+              "minutes": 21
+            },
+            {
+              "title": "Neuromuscular Junction Disorders",
+              "minutes": 18
+            }
+          ]
+        }
+      },
+      "parsed_videos": 50,
+      "parsed_minutes": 1017,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 1017,
+          "header": 1037
+        }
+      }
+    },
+    "Ophthalmology": {
+      "declared_videos": 10,
+      "declared_minutes": 194,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Eye Anatomy",
+              "minutes": 26
+            },
+            {
+              "title": "Eye Disorders",
+              "minutes": 23
+            },
+            {
+              "title": "Lens",
+              "minutes": 20
+            },
+            {
+              "title": "Glaucoma",
+              "minutes": 19
+            },
+            {
+              "title": "The Retina",
+              "minutes": 14
+            },
+            {
+              "title": "Retinal Disorders I",
+              "minutes": 13
+            },
+            {
+              "title": "Retinal Disorders II",
+              "minutes": 18
+            },
+            {
+              "title": "Optic Nerve",
+              "minutes": 18
+            },
+            {
+              "title": "Gaze Disorders",
+              "minutes": 26
+            },
+            {
+              "title": "Visual Field Defects",
+              "minutes": 13
+            }
+          ]
+        }
+      },
+      "parsed_videos": 10,
+      "parsed_minutes": 190,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 190,
+          "header": 194
+        }
+      }
+    },
+    "Pathology": {
+      "declared_videos": 11,
+      "declared_minutes": 182,
+      "sections": {
+        "General Topics": {
+          "videos": [
+            {
+              "title": "Cellular Adaptations",
+              "minutes": 18
+            },
+            {
+              "title": "Cell Injury",
+              "minutes": 11
+            },
+            {
+              "title": "Free Radicals",
+              "minutes": 18
+            },
+            {
+              "title": "Apoptosis",
+              "minutes": 16
+            },
+            {
+              "title": "Necrosis",
+              "minutes": 12
+            },
+            {
+              "title": "Inflammation Principles",
+              "minutes": 25
+            },
+            {
+              "title": "Acute and Chronic Inflammation",
+              "minutes": 17
+            },
+            {
+              "title": "Granulomatous Inflammation",
+              "minutes": 9
+            },
+            {
+              "title": "Wound Healing and Scar",
+              "minutes": 24
+            },
+            {
+              "title": "Pathologic Calcification",
+              "minutes": 8
+            },
+            {
+              "title": "Neoplasia",
+              "minutes": 25
+            }
+          ]
+        }
+      },
+      "parsed_videos": 11,
+      "parsed_minutes": 183,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 183,
+          "header": 182
+        }
+      }
+    },
+    "Psychiatry": {
+      "declared_videos": 21,
+      "declared_minutes": 271,
+      "sections": {
+        "Psychology": {
+          "videos": [
+            {
+              "title": "Conditioning and Transference",
+              "minutes": 12
+            },
+            {
+              "title": "Ego Defenses",
+              "minutes": 12
+            }
+          ]
+        },
+        "Pathology": {
+          "videos": [
+            {
+              "title": "Child Abuse and Neglect",
+              "minutes": 9
+            },
+            {
+              "title": "Childhood Disorders",
+              "minutes": 13
+            },
+            {
+              "title": "ADHD and Autism",
+              "minutes": 13
+            },
+            {
+              "title": "Cognitive Disorders",
+              "minutes": 12
+            },
+            {
+              "title": "Psychosis",
+              "minutes": 6
+            },
+            {
+              "title": "Psychotic Disorders",
+              "minutes": 13
+            },
+            {
+              "title": "Dissociative Disorders",
+              "minutes": 8
+            },
+            {
+              "title": "Somatic and Factitious Disorders",
+              "minutes": 9
+            },
+            {
+              "title": "Personality Disorders",
+              "minutes": 14
+            },
+            {
+              "title": "Mood Disorders",
+              "minutes": 21
+            },
+            {
+              "title": "Anxiety Disorders",
+              "minutes": 15
+            },
+            {
+              "title": "Eating Disorders",
+              "minutes": 11
+            }
+          ]
+        },
+        "Substance Use Disorders": {
+          "videos": [
+            {
+              "title": "Alcohol and CNS Depressants",
+              "minutes": 17
+            },
+            {
+              "title": "Opioids",
+              "minutes": 13
+            },
+            {
+              "title": "Stimulants",
+              "minutes": 13
+            },
+            {
+              "title": "Other Drugs",
+              "minutes": 9
+            }
+          ]
+        },
+        "Pharmacology": {
+          "videos": [
+            {
+              "title": "Antidepressants",
+              "minutes": 20
+            },
+            {
+              "title": "Lithium",
+              "minutes": 9
+            },
+            {
+              "title": "Antipsychotics",
+              "minutes": 22
+            }
+          ]
+        }
+      },
+      "parsed_videos": 21,
+      "parsed_minutes": 271
+    },
+    "Pulmonary": {
+      "declared_videos": 30,
+      "declared_minutes": 638,
+      "sections": {
+        "Embryology, Anatomy and Physiology": {
+          "videos": [
+            {
+              "title": "Pulmonary Embryology",
+              "minutes": 28
+            },
+            {
+              "title": "Pulmonary Anatomy I",
+              "minutes": 17
+            },
+            {
+              "title": "Pulmonary Anatomy II",
+              "minutes": 23
+            },
+            {
+              "title": "Pulmonary Physiology I",
+              "minutes": 19
+            },
+            {
+              "title": "Pulmonary Physiology II",
+              "minutes": 18
+            },
+            {
+              "title": "Hemoglobin",
+              "minutes": 25
+            },
+            {
+              "title": "Pulmonary Circulation",
+              "minutes": 18
+            },
+            {
+              "title": "Pulmonary Hypertension",
+              "minutes": 15
+            },
+            {
+              "title": "Ventilation and Perfusion",
+              "minutes": 22
+            },
+            {
+              "title": "Dead Space",
+              "minutes": 23
+            },
+            {
+              "title": "Hypoxia",
+              "minutes": 13
+            },
+            {
+              "title": "Hypoxemia",
+              "minutes": 34
+            },
+            {
+              "title": "Carbon Dioxide",
+              "minutes": 27
+            },
+            {
+              "title": "Lug Physical Exam",
+              "minutes": 14
+            }
+          ]
+        },
+        "Obstructive and Restrictive Diseases": {
+          "videos": [
+            {
+              "title": "Pulmonary Function Tests",
+              "minutes": 24
+            },
+            {
+              "title": "COPD",
+              "minutes": 23
+            },
+            {
+              "title": "Asthma & Bronchiectasis",
+              "minutes": 18
+            },
+            {
+              "title": "Restrictive Lung Disease",
+              "minutes": 21
+            },
+            {
+              "title": "Treatment of COPD and Asthma",
+              "minutes": 24
+            }
+          ]
+        },
+        "Other Pulmonary Topics": {
+          "videos": [
+            {
+              "title": "Pneumonia I",
+              "minutes": 21
+            },
+            {
+              "title": "Pneumonia II",
+              "minutes": 18
+            },
+            {
+              "title": "Pleural Disease",
+              "minutes": 25
+            },
+            {
+              "title": "Lung Cancer",
+              "minutes": 26
+            },
+            {
+              "title": "Sleep Apnea",
+              "minutes": 13
+            },
+            {
+              "title": "Cystic Fibrosis",
+              "minutes": 22
+            },
+            {
+              "title": "Tuberculosis",
+              "minutes": 22
+            },
+            {
+              "title": "Sarcoidosis",
+              "minutes": 11
+            },
+            {
+              "title": "Deep Vein Thrombosis & Pulmonary Embolism",
+              "minutes": 32
+            },
+            {
+              "title": "Chest X-rays",
+              "minutes": 10
+            }
+          ]
+        }
+      },
+      "parsed_videos": 29,
+      "parsed_minutes": 606,
+      "header_discrepancy": {
+        "videos": {
+          "parsed": 29,
+          "header": 30
+        },
+        "minutes": {
+          "parsed": 606,
+          "header": 638
+        }
+      }
+    },
+    "Renal": {
+      "declared_videos": 31,
+      "declared_minutes": 662,
+      "sections": {
+        "Embryology, Anatomy and Physiology": {
+          "videos": [
+            {
+              "title": "Renal Anatomy",
+              "minutes": 11
+            },
+            {
+              "title": "Renal Embryology",
+              "minutes": 18
+            },
+            {
+              "title": "Fluid Compartments",
+              "minutes": 25
+            },
+            {
+              "title": "Glomerular Filtration",
+              "minutes": 24
+            },
+            {
+              "title": "Clearance",
+              "minutes": 17
+            },
+            {
+              "title": "Secretion and Absorption",
+              "minutes": 23
+            },
+            {
+              "title": "Proximal Tubule",
+              "minutes": 33
+            },
+            {
+              "title": "Loop of Henle and Distal Tubule",
+              "minutes": 25
+            },
+            {
+              "title": "Collecting Duct",
+              "minutes": 23
+            },
+            {
+              "title": "Renin-Angiotensin-Aldosterone System",
+              "minutes": 25
+            }
+          ]
+        },
+        "Acid-Base": {
+          "videos": [
+            {
+              "title": "Acid Excretion",
+              "minutes": 20
+            },
+            {
+              "title": "Acid-Base Principles",
+              "minutes": 24
+            },
+            {
+              "title": "Metabolic Acidosis I",
+              "minutes": 17
+            },
+            {
+              "title": "Metabolic Acidosis II",
+              "minutes": 23
+            },
+            {
+              "title": "Metabolic Alkalosis",
+              "minutes": 16
+            },
+            {
+              "title": "Respiratory Acid Base Disorders",
+              "minutes": 11
+            },
+            {
+              "title": "Renal Tubular Acidosis",
+              "minutes": 19
+            }
+          ]
+        },
+        "Electrolytes": {
+          "videos": [
+            {
+              "title": "Hyponatremia",
+              "minutes": 23
+            },
+            {
+              "title": "Diabetes Insipidus",
+              "minutes": 16
+            },
+            {
+              "title": "Potassium Disorders",
+              "minutes": 19
+            },
+            {
+              "title": "Calcium, Phosphate and Magnesium",
+              "minutes": 21
+            }
+          ]
+        },
+        "Diseases of the Nephron": {
+          "videos": [
+            {
+              "title": "Glomerular Disease Principles",
+              "minutes": 25
+            },
+            {
+              "title": "Nephritic Syndrome",
+              "minutes": 24
+            },
+            {
+              "title": "Nephrotic Syndrome",
+              "minutes": 23
+            },
+            {
+              "title": "MPGN",
+              "minutes": 10
+            },
+            {
+              "title": "Tubulointerstitial Disease",
+              "minutes": 15
+            },
+            {
+              "title": "Renal Failure",
+              "minutes": 26
+            }
+          ]
+        },
+        "Other Renal Topics": {
+          "videos": [
+            {
+              "title": "Cystic Kidney Disease",
+              "minutes": 14
+            },
+            {
+              "title": "Diuretics",
+              "minutes": 23
+            },
+            {
+              "title": "Kidney Stones",
+              "minutes": 23
+            },
+            {
+              "title": "Renal and Bladder Tumors",
+              "minutes": 18
+            }
+          ]
+        }
+      },
+      "parsed_videos": 31,
+      "parsed_minutes": 634,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 634,
+          "header": 662
+        }
+      }
+    },
+    "Reproductive": {
+      "declared_videos": 37,
+      "declared_minutes": 437,
+      "sections": {
+        "Embryology": {
+          "videos": [
+            {
+              "title": "Embryonic Genes",
+              "minutes": 12
+            },
+            {
+              "title": "Embryogenesis",
+              "minutes": 8
+            },
+            {
+              "title": "Germ Layers",
+              "minutes": 8
+            },
+            {
+              "title": "Errors in Morphogenesis",
+              "minutes": 5
+            },
+            {
+              "title": "Teratogens I",
+              "minutes": 16
+            },
+            {
+              "title": "Teratogens II",
+              "minutes": 12
+            },
+            {
+              "title": "Pharyngeal Arches",
+              "minutes": 14
+            },
+            {
+              "title": "Cleft Lip and Palate",
+              "minutes": 3
+            },
+            {
+              "title": "Pharyngeal Pouches and Clefts",
+              "minutes": 6
+            },
+            {
+              "title": "Genital Embryology",
+              "minutes": 16
+            }
+          ]
+        },
+        "Pregnancy": {
+          "videos": [
+            {
+              "title": "Spermatogenesis and Oogenesis",
+              "minutes": 12
+            },
+            {
+              "title": "Placenta",
+              "minutes": 13
+            },
+            {
+              "title": "Twins",
+              "minutes": 6
+            },
+            {
+              "title": "Pregnancy",
+              "minutes": 14
+            },
+            {
+              "title": "Maternal-Fetal Disorders",
+              "minutes": 17
+            },
+            {
+              "title": "Hypertension in Pregnancy",
+              "minutes": 11
+            },
+            {
+              "title": "Placental Complications",
+              "minutes": 14
+            },
+            {
+              "title": "Gestational Tumors",
+              "minutes": 12
+            },
+            {
+              "title": "TORCH Infections",
+              "minutes": 14
+            }
+          ]
+        },
+        "Vagina, Cervix, Uterus": {
+          "videos": [
+            {
+              "title": "Vaginal Cancer",
+              "minutes": 5
+            },
+            {
+              "title": "Cervical Cancer",
+              "minutes": 9
+            },
+            {
+              "title": "Endometrial Disorders",
+              "minutes": 12
+            },
+            {
+              "title": "Endometriosis",
+              "minutes": 10
+            },
+            {
+              "title": "Endometrial Cancer",
+              "minutes": 10
+            }
+          ]
+        },
+        "Ovary": {
+          "videos": [
+            {
+              "title": "Ovarian Cysts",
+              "minutes": 6
+            },
+            {
+              "title": "Ovarian Epithelial Tumors",
+              "minutes": 12
+            },
+            {
+              "title": "Ovarian Stromal Tumors",
+              "minutes": 6
+            },
+            {
+              "title": "Ovarian Germ Cell Tumors",
+              "minutes": 11
+            }
+          ]
+        },
+        "Breast": {
+          "videos": [
+            {
+              "title": "Breast Tissue",
+              "minutes": 12
+            },
+            {
+              "title": "Breast Disorders",
+              "minutes": 15
+            },
+            {
+              "title": "Breast Carcinoma",
+              "minutes": 17
+            }
+          ]
+        },
+        "Male Disorders": {
+          "videos": [
+            {
+              "title": "Penile Disorders",
+              "minutes": 18
+            },
+            {
+              "title": "Scrotal Disorders",
+              "minutes": 14
+            },
+            {
+              "title": "Testicular Cancer",
+              "minutes": 14
+            },
+            {
+              "title": "Prostate",
+              "minutes": 16
+            }
+          ]
+        },
+        "Other Topics": {
+          "videos": [
+            {
+              "title": "Disorders of Sexual Development",
+              "minutes": 24
+            },
+            {
+              "title": "Hypogonadism",
+              "minutes": 12
+            }
+          ]
+        }
+      },
+      "parsed_videos": 37,
+      "parsed_minutes": 436,
+      "header_discrepancy": {
+        "minutes": {
+          "parsed": 436,
+          "header": 437
+        }
+      }
+    }
+  }
+}

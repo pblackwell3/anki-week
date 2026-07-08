@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "phillo-study",
+  "description": "Turn a med-school week's lectures into the right AnKing Step Deck cards and a paced study plan. Bring your own AnKing deck and study resource.",
+  "owner": { "name": "pblackwell3", "url": "https://github.com/pblackwell3" },
+  "plugins": [
+    {
+      "name": "anki-week",
+      "source": "./plugins/anki-week",
+      "description": "Build a week's AnKing Step Deck from your lecture materials — unsuspend + tag cards, one filtered deck per lecture, coverage audit. Requires Anki desktop + the Anki MCP Server add-on (124672614).",
+      "category": "productivity"
+    },
+    {
+      "name": "study-week",
+      "source": "./plugins/study-week",
+      "description": "Plan the week's study TIME around your decks: map lectures to videos, reserve Anki review time, and stage pre-lecture blocks into your calendar as proposed events.",
+      "category": "productivity"
+    }
+  ]
+}
