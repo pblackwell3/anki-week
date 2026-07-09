@@ -5,7 +5,7 @@ Meharry M1 preset; the rows marked **← SET THIS** are yours.
 
 | Key | Value | Notes |
 |---|---|---|
-| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Your local folder of lecture slides. Layout: `<course_folder>/<Course>/Week <n>/` with the PPTX/PDF directly inside. |
+| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Your local folder of lecture slides. Layout: `<course_folder>/<Course>/Week <n>/` with the PPTX/PDF directly inside. **In Cowork the skill can download each week's materials here from Blackboard (browser, your logged-in session); in Claude Code, add them yourself.** |
 | `syllabus` | `← SET THIS` (path to your syllabus `.docx`/`.pdf`) | **Read in Stage 0.** Its Course Outline table gives each lecture's Learning Objectives = the authoritative card scope. You already have this as an enrolled student — point the skill at your own copy. |
 | `current_week` | `1` | Curriculum week to build. Bump each week. |
 | `class_calendar_id` | `← SET THIS` | The class calendar that lists the numbered IM lectures (`IM (n) Title`). Subscribe to the shared class calendar and paste its id (a long string ending in `calendar.google.com`), or leave blank and feed lectures manually. |

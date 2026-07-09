@@ -14,7 +14,8 @@ Turn this week's lectures into the right AnKing Step Deck cards to study. The ca
 ## Prerequisites (check first, every run)
 
 - **Anki desktop must be OPEN** on this Mac with the **Anki MCP Server** add-on (AnkiWeb code `124672614`) enabled — it serves the `anki` MCP at `http://127.0.0.1:3141`. (NOT AnkiConnect; that's a different add-on and isn't used here.) If `list_decks` / `find_notes` errors, STOP and tell the user to open Anki — change nothing.
-- Runs only in **Claude Code** (local). Cowork cannot reach the localhost Anki MCP server.
+- **Set up once in Claude Code** (install Node, edit this config, connect Anki); after that the skill runs in **both Claude Code and Cowork** — the Anki MCP add-on is reachable from both.
+- **Prefer Cowork for weekly builds:** only Cowork can open **Blackboard** in a browser (reusing your logged-in session) to download the week's lecture materials into your `course_folder`. In Claude Code you add those materials yourself.
 
 ## When to use
 
