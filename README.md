@@ -6,8 +6,10 @@ Two Claude Code skills for medical students:
   unsuspending + tagging cards that already exist (it never creates cards from scratch) and
   building one filtered deck per lecture.
 - **study-week** — plans the week's study *time* around those decks: maps each lecture to its
-  study video(s), reserves daily Anki-review time, and stages pre-lecture blocks on your calendar
-  as proposed events.
+  study video(s), reserves daily Anki-review time, and puts pre-lecture blocks on your calendar as
+  real events you can move or delete yourself.
+
+Using ChatGPT instead of Claude? There's a port — see [`chatgpt/`](chatgpt/).
 
 ## Install
 
