@@ -51,12 +51,3 @@ AnKing/board variant on the right. Always add the abbreviation when that's the f
 |---|---|---|
 | | | |
 
----
-
-## Example rows (delete once you have your own)
-
-| Slide term | AnKing / board variant(s) | Added after |
-|---|---|---|
-| isotretinoin | 13-cis-retinoic acid · Accutane | derm pharm |
-| gas gangrene | *Clostridium perfringens* · C. perfringens | micro |
-| S. aureus | *Staphylococcus aureus* | micro |

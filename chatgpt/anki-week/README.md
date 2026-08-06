@@ -91,9 +91,9 @@ has room to grow — but the manual is the right home for anything that isn't a 
    - **`knowledge/synonym-map.md`** — *yours.* Slide word → AnKing word. Ships nearly empty, and is the
      one that carries coverage from ~90% toward ~95% as it grows.
 
-   The last two starting empty is normal — they fill in as you build weeks, via the
-   [memory loop](#growing-your-map-the-memory-loop). Each has example rows at the bottom showing the
-   format; delete those once you have your own.
+   The last two ship **empty** — that's expected, not a broken download. They fill in as you build
+   weeks, via the [memory loop](#growing-your-map-the-memory-loop). Each carries the column headers and
+   a blank row, so the first `APPEND BLOCK` pastes straight in.
 
    A `run-log.md` is *optional* and you create it yourself if you want the GPT to have precedent from
    past builds. Long history retrieves poorly, so skip it if answers get noisy.
@@ -163,8 +163,8 @@ Also worth knowing:
 
 - **Each conversation starts cold.** Give it the week's materials every time; don't assume it remembers
   last week's build.
-- **Editing the files by hand is fine and encouraged** — they're plain Markdown tables. Delete the
-  example rows once you have your own.
+- **Editing the files by hand is fine and encouraged** — they're plain Markdown tables. Add, correct,
+  or delete rows yourself whenever you spot something the GPT got wrong.
 - **Re-paste `instructions.md` whenever it changes.** An existing GPT keeps the old text forever
   otherwise. If it ever ignores a rule you know is in the manual, check this first.
 

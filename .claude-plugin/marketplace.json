@@ -13,7 +13,7 @@
     {
       "name": "study-week",
       "source": "./plugins/study-week",
-      "description": "Plan the week's study TIME around your decks: map lectures to videos, reserve Anki review time, and stage pre-lecture blocks into your calendar as proposed events.",
+      "description": "Plan the week's study TIME around your decks: map lectures to videos, reserve Anki review time, and put pre-lecture blocks on your calendar as real events you can move or delete.",
       "category": "productivity"
     }
   ]

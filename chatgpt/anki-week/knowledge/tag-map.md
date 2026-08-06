@@ -53,20 +53,6 @@ catch a leaf that's drifted or that you picked at the wrong altitude.
 
 ---
 
-## Example rows (delete once you have your own)
-
-These are real, verified mappings from a live collection. They're here to show the shape and the
-altitude tradeoff — they are **not** your course, so replace them as you go.
-
-| Topic / resource ref | Leaf tag(s) | Notes |
-|---|---|---|
-| heart sounds + murmurs (one lecture) | `^Systems::Cardio::HeartSounds` | verified 31 cards. Bundles sounds + murmurs. |
-| murmurs only | `#B&B::06_Cardio::05_Cardiac_Auscultation::01_Heart_Murmurs` | resource leaf; use when sounds & murmurs are separate lectures |
-| heart sounds only | `#B&B::06_Cardio::05_Cardiac_Auscultation::02_Heart_Sounds` | resource leaf counterpart |
-| auscultation (First Aid frame) | `#FirstAid::07_Cardiovascular::03_Physiology::10_Auscultation_of_the_heart` | FA leaf for a heart-sounds lecture |
-
----
-
 ## Enumerating leaves properly (first run of a new subject)
 
 Don't guess leaf paths and don't sample sequential note ids — ids cluster by topic, so a sample is
