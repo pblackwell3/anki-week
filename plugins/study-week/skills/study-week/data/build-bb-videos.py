@@ -4,7 +4,10 @@
 Usage:
     python3 build-bb-videos.py <checklist.pdf> [out.json]
 
-Text is extracted via macOS PDFKit (osascript/JXA) so no pip deps are needed.
+Text extraction tries PyMuPDF first (portable — works on Linux/Cowork as well as
+the Mac; `pip install pymupdf`), then falls back to macOS PDFKit via osascript/JXA
+so the script still runs dependency-free on a stock Mac. Do NOT swap in the
+pure-Python zlib method: it mangles CID-encoded PDFs (see anki-week config.md).
 
 Integrity model: the per-video "(N minutes)" lines are ground truth. The
 subject-header totals ("N videos; H hours M minutes") in this checklist are
@@ -45,10 +48,20 @@ VIDEO_RE = re.compile(r'^(.+?)\s*\((\d+)\s*minutes?\)\s*$')
 
 
 def extract_text(pdf_path):
+    """PyMuPDF if available (portable), else macOS PDFKit. Same text either way."""
+    try:
+        import fitz  # pymupdf
+    except ImportError:
+        pass
+    else:
+        with fitz.open(pdf_path) as doc:
+            return "\n".join(page.get_text() for page in doc)
+
     p = subprocess.run(["osascript", "-l", "JavaScript", "-e", JXA, pdf_path],
                        capture_output=True, text=True)
     if p.returncode != 0:
-        sys.exit(f"PDF extraction failed: {p.stderr}")
+        sys.exit("PDF extraction failed — no PyMuPDF (`pip install pymupdf`) and "
+                 f"macOS PDFKit fallback errored: {p.stderr}")
     return p.stdout
 
 

@@ -75,3 +75,34 @@ Neoplasia + genetics + molecular bio + biochem/metabolism. Tier noted per row; g
 | IM39 Enzyme & Receptor Kinetics | `#B&B::02_Basic_Pharmacology::01_General::01_Enzymes` · `::02_Enzyme_Inhibitors` · `#B&B::04_Biochem::02_Metabolism::12_Ethanol_Metabolism` | 1+2 | Km/Vmax, competitive/noncompetitive/uncompetitive, ethanol↔fomepizole antidote. Custom: 6 EC classes; enzyme-vs-receptor (Km↔EC50, Vmax↔Emax) parallels. |
 
 > Genetics IM25–31 mappings are **objective-derived (no slides posted)** — reconcile against Forbes/Dash/Muthu/Liu slides when they drop; decks carry 🚧 until then.
+
+## 🦠 MICROBIOLOGY — Sketchy is the backbone (hard rule, set 2026-08-05)
+
+**Micro does NOT resolve through B&B.** AnKing tags micro **organism-by-organism** — Sketchy's shape.
+B&B's Infectious-Disease chapter follows the video curriculum and under-tags individual bugs, so
+leading with it yields a near-empty build. Rung 0 for any micro concept:
+
+| Lens | Tag root | Status |
+|---|---|---|
+| **Primary** | `#SketchyMicro::…` | Root **verified**; child leaves **NOT yet enumerated** — do it on the first micro run (`get_tags` by prefix) and append the organism→leaf rows below. |
+| **Co-lens** | `#FirstAid::03_Microbiology::…` | **Verified in use** — the whole IM17 build ran on it (see rows below). Pull alongside Sketchy, don't wait for the gap pass. |
+| Supplement only | `#B&B::…Infectious_Disease` | Demoted to rung 1–2 for micro lectures. |
+
+**Trigger:** named organism (genus/species) · Gram stain / morphology / arrangement · virulence factors
+or toxins · culture & lab ID (catalase, coagulase, hemolysis, oxidase) · antimicrobial spectrum.
+
+### Confirmed FA micro leaves (from the IM17 Normal Flora build)
+
+| Topic / organism | Leaf tag (under `#FirstAid::03_Microbiology::`) | Notes |
+|---|---|---|
+| Normal flora by body site | `06_Systems::01_Normal_microbiota:_dominant` | all-tier (foundational) |
+| *Streptococcus agalactiae* (GBS) | `09_Streptococcus_agalactiae` | ⚠️ a later audit **cut 20 cards** of GBS clinical depth (CAMP test, neonatal disease, penicillin tx) the intro lecture never taught — depth-match. |
+| Coxsackievirus | `05_Virology::10_Picornavirus::*Coxsackievirus` | |
+| *Streptococcus pyogenes* (GAS) | `…Streptococcus_pyogenes` | ⚠️ **46 cards — deliberately HELD** for a single pharyngitis mention. The organism-depth guardrail in action. |
+
+> **⚠️ Organism-depth guardrail.** Organism the lecture **teaches** → take its leaf. Organism merely
+> **name-dropped** → **one recognition card**, never the whole leaf. Micro leaves are large and
+> clinically deep; this is where a micro deck bloats.
+
+<!-- Sketchy micro organism→leaf mappings appended below as they're confirmed -->
+
