@@ -27,9 +27,15 @@ Anki. A live-Actions mode is available if you expose Anki behind an HTTPS endpoi
 |---|---|
 | `instructions.md` | Paste into the GPT's **Instructions** field. Identity, hard gates, invariants, and pointers into the manual. Deliberately short. |
 | `knowledge/anki-week-manual.md` | **Upload to Knowledge.** The authoritative ruleset, written for ChatGPT. |
+| `knowledge/tag-map.md` | **Upload to Knowledge.** *Your* growing brain: course concept → AnKing leaf tag. Starts near-empty. |
+| `knowledge/synonym-map.md` | **Upload to Knowledge.** *Your* alias list: slide word → AnKing word. Starts near-empty. |
 | `conversation-starters.md` | The four starter chips + alternates. |
 | `openapi.yaml` | **Optional** Actions schema for live mode. Skip it for advisory mode. |
 | `README.md` | This setup guide. |
+
+Upload **all three** Knowledge files. The manual is fixed — it's the method, and you never edit it. The
+other two are yours, they start almost empty, and they're what turns this from a generic tool into
+*your course's* tool. See [Growing your map](#growing-your-map-the-memory-loop) below.
 
 ### Why there's a manual (and why Instructions is short)
 
@@ -77,18 +83,24 @@ has room to grow — but the manual is the right home for anything that isn't a 
    - Description: `Turns a week's med-school lectures into the right AnKing Step Deck cards — maps objectives to AnKing tags, gives you the unsuspend/tag/filtered-deck plan, and coverage-audits every objective.`
 
 3. **Instructions.** Open `instructions.md`, copy everything from the `## What you are` heading to the
-   end of the file, and paste it into the **Instructions** box (~5.4k characters, well under the 8k
-   limit).
+   end of the file, and paste it into the **Instructions** box (~6.5k characters, under the 8k limit).
 
-4. **Knowledge — upload these.** Drag into the **Knowledge** uploader:
-   - **`chatgpt/anki-week/knowledge/anki-week-manual.md`** — **required.** The authoritative ruleset.
-   - `plugins/anki-week/skills/anki-week/data/tag-map.md` — **recommended.** The growing brain
-     (course vocab → confirmed leaf tags), including the micro/Sketchy section. Re-upload as it grows.
-   - `plugins/anki-week/skills/anki-week/data/synonym-map.md` — **recommended.** Slide term → AnKing
-     term. The Selection Protocol's ongoing tuning surface; **re-upload every time it grows**, since
-     that's what carries coverage from ~90% toward ~95%.
-   - `plugins/anki-week/skills/anki-week/data/run-log.md` — *optional*, for precedent. It's long
-     history and retrieves poorly; skip it if answers get noisy.
+4. **Knowledge — upload all three.** Drag these into the **Knowledge** uploader:
+   - **`knowledge/anki-week-manual.md`** — the authoritative ruleset. Fixed; you never edit it.
+   - **`knowledge/tag-map.md`** — *yours.* Course concept → AnKing leaf tag. Ships nearly empty.
+   - **`knowledge/synonym-map.md`** — *yours.* Slide word → AnKing word. Ships nearly empty, and is the
+     one that carries coverage from ~90% toward ~95% as it grows.
+
+   The last two starting empty is normal — they fill in as you build weeks, via the
+   [memory loop](#growing-your-map-the-memory-loop). Each has example rows at the bottom showing the
+   format; delete those once you have your own.
+
+   A `run-log.md` is *optional* and you create it yourself if you want the GPT to have precedent from
+   past builds. Long history retrieves poorly, so skip it if answers get noisy.
+
+   > Use the copies under **`chatgpt/anki-week/knowledge/`** — not the ones under
+   > `plugins/anki-week/…/data/`. Those belong to the Claude Code plugin and hold *its author's* course
+   > vocabulary, which isn't yours.
 
    > **Do NOT upload `config.md` or `playbook.md`** — see *Why there's a manual* above. They carry
    > superseded rules and CLI-only transport instructions; the manual supersedes both.
@@ -121,25 +133,40 @@ The advisory flow mirrors the skill's stages:
    to unsuspend, the `Sched::…` tags to add, the filtered-deck definition, and any **custom cards** to
    author (with the required `Back Extra:""` for Cloze).
 4. Run them in Anki, then **sync**.
-5. It gives you a **run-log entry** and any **new tag-map mappings** to save, plus the one-line undo
-   (`re-suspend tag:Sched::<week>::*`).
+5. It gives you a **run summary**, the one-line undo (`re-suspend tag:Sched::<week>::*`), and an
+   **`APPEND BLOCK`** of new rows for `tag-map.md` / `synonym-map.md`. Paste those in and re-upload —
+   see [Growing your map](#growing-your-map-the-memory-loop).
 
-### Keeping the brain fresh — the GPT cannot write back
+### Growing your map (the memory loop)
 
 **A Custom GPT has no persistent memory of its own.** Knowledge is a **static upload**, not a live repo,
-and the GPT can't edit it. Nothing it learns in a chat survives into the next one unless *you* carry it
-across. Two consequences:
+and the GPT *cannot* edit it. Nothing it learns in a chat survives into the next one unless **you** carry
+it across. So the memory is a loop you run — it takes about thirty seconds, and it's the difference
+between a generic tool and one that knows your course:
 
-- **Each conversation starts cold.** Give it the week's materials each time; don't assume it remembers
+1. **Every build ends with an `APPEND BLOCK`** — a fenced block of ready-to-paste table rows. New
+   concept→leaf mappings go to `tag-map.md`; new aliases go to `synonym-map.md`. The GPT is instructed to
+   emit this every run, and to say so explicitly when a run turned up nothing new.
+2. **Paste the rows** into your local copies of those two files, under the *Your mappings* / *Your
+   aliases* tables.
+3. **Re-upload both files** in Configure ▸ Knowledge — delete the old copy, add the new one. Replacing
+   matters; adding a second copy leaves the stale one retrievable.
+4. Next run the GPT checks `tag-map.md` **first**, and expands entities through `synonym-map.md` before
+   intersecting. What you saved is now permanent.
+
+Skip step 3 and the work is lost — the GPT re-derives the same mapping next week and may land at a
+different altitude. **The aliases are the highest-value rows**: they're what carries coverage from ~90%
+toward ~95%, because a missing alias shows up as a *phantom* gap that looks like a missing resource but
+isn't. Confirmed **Sketchy organism → leaf** mappings are the next most expensive to rediscover.
+
+Also worth knowing:
+
+- **Each conversation starts cold.** Give it the week's materials every time; don't assume it remembers
   last week's build.
-- **You are the write-back.** When it hands you new `tag-map` rows (especially **confirmed Sketchy
-  organism → leaf** mappings — those are the expensive ones to rediscover) or a run-log entry, append
-  them to the canonical files in `plugins/anki-week/…/data/`, then **re-upload** `tag-map.md` in
-  Configure ▸ Knowledge (delete the old copy, add the new). That's the ChatGPT equivalent of the
-  skill's `git commit && push`.
-
-**Re-paste `instructions.md` whenever it changes**, too — an existing GPT keeps the old text forever
-otherwise. If the GPT ever ignores a rule you know is in the manual, that's the first thing to check.
+- **Editing the files by hand is fine and encouraged** — they're plain Markdown tables. Delete the
+  example rows once you have your own.
+- **Re-paste `instructions.md` whenever it changes.** An existing GPT keeps the old text forever
+  otherwise. If it ever ignores a rule you know is in the manual, check this first.
 
 ---
 

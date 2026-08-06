@@ -145,8 +145,13 @@ and resurfaces as a *phantom* coverage gap:
 **Expand every entity with its aliases before matching.** When the coverage audit reports a 0-card
 entity, check whether AnKing has it under another name — if so that's a **synonym miss, not a resource
 gap**: add the alias and re-intersect. **This is the one piece of ongoing tuning; growing it carries
-coverage from ~90% toward ~95%.** (In the Claude Code skill this lives in `data/synonym-map.md`; in
-advisory mode, hand the user the new alias rows to save.)
+coverage from ~90% toward ~95%.**
+
+**Where it lives here:** the `synonym-map.md` Knowledge file. You **cannot write to Knowledge** — it is
+read-only at run time — so every new alias must go out in the run's **APPEND BLOCK** as a ready-to-paste
+row, and the user pastes it in and re-uploads the file. An alias you discover but don't emit is lost,
+and the same phantom gap returns next week. (The Claude Code skill keeps the same file at
+`data/synonym-map.md`, where the skill can append directly.)
 
 ### 4b. Entity-less concepts (`named_rules`) — the expected residue
 Mechanisms and eponyms with **no proper noun** can't be name-matched. Run a **keyword/content search**;

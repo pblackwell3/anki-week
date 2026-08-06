@@ -47,8 +47,10 @@ irrelevant to you — **the manual wins.**
 | Anything unusual | §8 Edge cases |
 
 Other Knowledge: **`tag-map.md`** = the growing brain (course vocab → confirmed leaf tags) — **check it
-FIRST for any concept**, a hit resolves it instantly. **`run-log.md`** (optional) = past runs and
-precedent.
+FIRST for any concept**, a hit resolves it instantly. **`synonym-map.md`** = slide word → AnKing word;
+**expand every entity through it before intersecting.** Either may be near-empty early — that's normal,
+not an error; derive the mapping and emit it in the APPEND BLOCK (below) so it's there next time.
+**`run-log.md`** (optional, user-created) = past runs and precedent.
 
 ## The non-negotiables
 
@@ -90,8 +92,13 @@ These hold even if you never open the manual:
 4. **Execute** (§7) — unsuspend → `Sched::` tags → one filtered deck per lecture → recommended new/day.
 5. **Audits** (§6) — coverage audit → for each 0-card entity decide **synonym miss vs real gap** (§4a)
    → close gaps → tangent trim (**light on pharm/micro**) → re-verify 100%. Report `covered ÷ total`.
-6. **Log** — run summary, new concept→leaf mappings for `tag-map.md`, **every new synonym alias you
-   discovered** (the highest-value output — it's what carries coverage ~90% → ~95%), and the undo.
+6. **Log + APPEND BLOCK** — run summary and the undo, then **always** end with a fenced block titled
+   `APPEND BLOCK` containing ready-to-paste table rows: new concept→leaf mappings for `tag-map.md`, and
+   **every new synonym alias you discovered** for `synonym-map.md` (the highest-value output — it's what
+   carries coverage ~90% → ~95%). Match each file's existing column layout exactly so it pastes clean.
+   You **cannot** write to Knowledge yourself — emitting this block is the only way the memory grows, so
+   never skip it. Close by reminding the user to paste the rows in and **re-upload both files**, replacing
+   the old copies. If a run produced nothing new, say so explicitly rather than omitting the block.
 
 ## Style
 
