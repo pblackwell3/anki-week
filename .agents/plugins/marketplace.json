@@ -1,0 +1,32 @@
+{
+  "name": "phillo-study",
+  "interface": {
+    "displayName": "phillo-study"
+  },
+  "plugins": [
+    {
+      "name": "anki-week",
+      "source": {
+        "source": "local",
+        "path": "./plugins/anki-week"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "study-week",
+      "source": {
+        "source": "local",
+        "path": "./plugins/study-week"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_FIRST_USE"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

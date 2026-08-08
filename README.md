@@ -27,6 +27,17 @@ in your config. A readable version of that walkthrough is in [`docs/SETUP.md`](d
 
 To update later: `/plugin marketplace update phillo-study`.
 
+### Codex
+
+The same plugins carry a `.codex-plugin/` manifest, so Codex can install them from this repo —
+clone it, then point Codex at the marketplace file at `.agents/plugins/marketplace.json`.
+The skills themselves are the same files; nothing is duplicated per surface.
+
+> **Anki needs to be reachable.** `anki-week` talks to Anki over `127.0.0.1:3141`, so it only
+> works where the agent runs on the same machine as Anki — Claude Code, Claude Cowork, or Codex
+> locally. ChatGPT in the browser can't reach your Mac's localhost. `study-week` is calendar-driven
+> and less affected.
+
 ## What you need
 
 | Requirement | Why |
