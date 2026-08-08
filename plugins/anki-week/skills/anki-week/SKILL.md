@@ -29,7 +29,7 @@ Turn this week's lectures into the right AnKing Step Deck cards to study. The ca
 
 - **Anki desktop must be OPEN** on this Mac with the **Anki MCP Server** add-on (AnkiWeb code `124672614`) enabled — it serves the `anki` MCP at `http://127.0.0.1:3141`. (NOT AnkiConnect; that's a different add-on and isn't used here.) If `list_decks` / `find_notes` errors, STOP and tell the user to open Anki — change nothing.
 - **Set up once in Claude Code** (install Node, edit this config, connect Anki); after that the skill runs in **both Claude Code and Cowork** — the Anki MCP add-on is reachable from both.
-- **Prefer Cowork for weekly builds:** only Cowork can open **Blackboard** in a browser (reusing your logged-in session) to download the week's lecture materials into your `course_folder`. In Claude Code you add those materials yourself.
+- **A browser is what lets this skill feed itself.** When a lecture's materials are missing, Stage 0 opens `blackboard_url` and downloads them (reusing your logged-in session). **Claude Cowork has a browser; plain Claude Code usually does not** — there the skill will ask you to switch or to add the files yourself. Prefer Cowork for weekly builds.
 
 ## When to use
 
@@ -42,6 +42,7 @@ Run the detailed steps in **reference/playbook.md** — it has the exact MCP cal
 
 | Stage | What | Key tools |
 |---|---|---|
+| **0a · Fetch** | **Run this the moment the calendar names a lecture whose materials aren't on disk — before any mapping.** See *Materials missing → FETCH* below. | browser |
 | 0 · Intake | **Calendar first, but only as an INDEX** — it names the week's lectures so you know *which materials to go read*. Then **READ THE MATERIALS** (PPTX→`pptx`, PDF→`pdf`) — the primary pass. Then **Syllabus objectives** as a cross-check (may *add* scope, never subtract). Produce the concept inventory (= the coverage floor) **and the SCOPE SPEC**: lecture `type` + typed entity lists + `named_rules` + slide-bold `high_yield`. **Materials outrank the title; the calendar never defines scope.** | Calendar, Read, pptx/pdf |
 | 1 · Wide net | Cast the **candidate universe**: `(B&B/Bootcamp) + FirstAid` always, **+ Sketchy only if `type` is pharm/micro**. `#AK_Step1_v12::` only; exclude `!DELETE(Duplicate)`. **Nothing here gets unsuspended.** Dedup is a non-issue (one pre-deduped deck). | `find_notes` |
 | 2 · **Intersect** | **The scoping step.** Expand entities via `synonym-map.md`, then keep a card only if its **tag or content names a Scope-Spec entity**. Apply the depth rule by `type` (pharm/micro comprehensive · path/genetics/immuno lean · foundational all-tier recognition). HY gate 1+2 + exceptions. Report the collapse (e.g. 429 → 77). | `find_notes`, `notes_info`, synonym-map |
@@ -50,6 +51,25 @@ Run the detailed steps in **reference/playbook.md** — it has the exact MCP cal
 | **4.5 · Coverage audit** | **The floor check.** Walk **every concept in the material inventory** (∪ objectives) and confirm ≥1 card covers it. Uncovered → pull more AnKing cards, or if AnKing genuinely has none (named frameworks/lists/kinetics, pure definitions) **add a custom Basic/Cloze card** (`add_note`) tagged with the lecture's `Sched::` tag + `Sched::custom`. This IS "reconciliation" when new slides arrive — a coverage pass, not a light trim. **The deck is not done while any material concept is uncovered.** Report concepts-covered vs gaps. Then run the standard card-by-card **tangent audit** (config Operating-principles v2 §7) — it cuts cards that cover *no* inventory concept, and **may never remove the last card covering one**. | `find_notes`, `notes_info`, `add_note` |
 | 5 · Log + learn | Append the run + the coverage report to `data/run-log.md`; record confirmed concept→leaf mappings into `data/tag-map.md`. | Write |
 | **6 · Plan the week (`study-week` handoff)** | The week's cards now exist → invoke the **`study-week`** skill so the built decks become a study *plan*: it maps each lecture to its Boards & Beyond video(s), reserves daily Anki-review time (from your recent review volume), and stages pre-lecture study blocks in your 2–8 PM calendar window as `🟡 Proposed —` events to accept or delete. Runs **after** decks are built so the plan reflects real cards. | `study-week` |
+
+### Materials missing → FETCH, never silently degrade
+
+The calendar names the week's lectures. For **each** one, check
+`<course_folder>/<Course>/Week <n>/` for its materials. If a lecture has none, do **not** proceed to
+mapping — work this ladder in order and stop at the first rung that succeeds:
+
+1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
+   download the missing files into that lecture's week folder. If the session isn't logged in, **STOP
+   and ask the user to log in**, then continue. Never guess at a URL, and never invent a filename.
+2. **No browser on this surface → hand it back.** Tell the user plainly: *"I can't open Blackboard from
+   here. Switch to Claude Cowork and re-run, or drop the files into `<path>` yourself."* Name the exact
+   folder. **Then wait** — don't build around the gap.
+3. **Only if both fail** → fall back to the syllabus objectives, and mark every deck built that way
+   **🚧 materials pending** so the gap is visible in the run log and can be rebuilt later.
+
+**Why this is a hard rule:** Stage 0 is materials-first, so a missing file doesn't degrade the build a
+little — it silently redefines the scope to whatever the title implies. Rungs 1 and 2 are cheap; rung 3
+is a real loss of coverage. Reaching rung 3 without having genuinely tried 1 and 2 is a build failure.
 
 ### Stage 6 — handing off to study-week
 

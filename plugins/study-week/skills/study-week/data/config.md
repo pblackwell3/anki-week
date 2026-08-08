@@ -12,6 +12,13 @@ Rows marked **← SET THIS** are yours.
 
 Mornings are left alone; the skill only proposes blocks inside the study window below.
 
+## Lecture materials (Stage 1.5 — read these BEFORE mapping videos)
+
+| Key | Value | Notes |
+|---|---|---|
+| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Local archive, **same path as `anki-week`'s config**. Layout: `<course_folder>/<Course>/Week <n>/` with materials directly inside. A week can span multiple `<Course>` folders — gather all `*/Week <n>/`. |
+| `blackboard_url` | `← SET THIS` (e.g. `https://blackboard.yourschool.edu/`) | Your school's LMS login / course-list page. When a lecture's materials are missing from `course_folder`, Stage 1.5 fetches them from here rather than guessing from the title. Same value as `anki-week`'s. **No credentials are stored** — if you're not logged in, the skill stops and asks you to log in. |
+
 ## Study window & caps
 
 | Key | Value | Notes |

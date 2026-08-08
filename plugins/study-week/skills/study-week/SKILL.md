@@ -68,7 +68,8 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 |---|---|---|
 | 0 · Week | Resolve the target week (default: coming Mon–Sun) from `config.md`. | — |
 | 1 · Lectures | Read the week's `IM (NN)` sessions from the Class calendar → ordered lecture list. **This is the index of what to read next, not the scope.** | `list_events` |
-| **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. No materials → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
+| **1.4 · Fetch** | Any lecture with no materials in `<course_folder>/<Course>/Week <n>/` → **fetch before mapping**. See *Materials missing → FETCH* below. | browser |
+| **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
 | 2 · Busy | Read Personal calendar; per day, subtract window events → free intervals in the 2–8 PM window. | `list_events` |
 | 3 · Anki | Reserve a daily review block from recent review volume (`find_notes deck:… rated:N`), or the fixed fallback. Reviews go first. | `find_notes` |
 | 4 · Map | Map each lecture's **concept inventory** → the B&B leaf video(s) that **cover all of it** (reuse `data/lecture-map.md`); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read `bb-videos.json`, `watched-videos.md` |
@@ -88,6 +89,23 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 - **B&B primary lens:** map by subject via `bb-videos.json`; dedupe shared videos.
 - **Cover the materials:** the mapped video set must cover the lecture's whole concept inventory.
   Under-covering is a defect; over-covering is fine. Surface uncovered concepts in the plan doc.
+
+### Materials missing → FETCH, never silently degrade
+
+Same rule as `anki-week` — a missing file must not quietly become a title-derived guess. For any
+lecture with nothing in `<course_folder>/<Course>/Week <n>/`, work this ladder and stop at the first
+rung that succeeds:
+
+1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
+   download the missing files into that lecture's week folder. Not logged in → **STOP and ask the user
+   to log in**, then continue.
+2. **No browser on this surface → hand it back.** Say so plainly, name the exact folder the files
+   belong in, and suggest re-running in **Claude Cowork**. **Then wait.**
+3. **Only if both fail** → fall back to objectives/title, mark the mapping `low-confidence`, and flag
+   the lecture **🚧 materials pending** in the plan doc.
+
+Mapping a video off a lecture *title* is the failure mode this prevents: the title says what the
+lecture is called, the materials say what it teaches, and only the second one picks the right video.
 - **Don't re-schedule watched videos.** Skip anything in `data/watched-videos.md` — but it still
   **counts as covering** its concepts (`✓ watched`), so skipping never creates a coverage gap.
   Scheduling a video never marks it watched; only an explicit confirmation does.

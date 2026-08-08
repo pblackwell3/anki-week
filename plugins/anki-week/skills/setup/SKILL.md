@@ -49,14 +49,29 @@ unsure, default to `#B&B` and tell them they can change it later.
 
 **Step 5 — Fill config.** Open the anki-week `data/config.md` and set, asking for each:
 `course_folder` (their slides; confirm the path exists if you can), `syllabus` (path to their own
-syllabus `.docx`/`.pdf`), `current_week`, and `class_calendar_id` (their class calendar, or blank
-to feed lectures manually). Write the file and read it back to them.
+syllabus `.docx`/`.pdf`), `current_week`, `class_calendar_id` (their class calendar, or blank
+to feed lectures manually), and **`blackboard_url`** — the page they land on when they log into their
+school's LMS. Ask them to open Blackboard and paste the URL from the address bar; that's all it is.
+Explain what it buys them: when a lecture's slides aren't in `course_folder` yet, the skill downloads
+them instead of building a deck off the lecture title. **Never ask for their LMS password** — the skill
+reuses whatever browser session they're already logged into. Set the same `blackboard_url` and
+`course_folder` in study-week's `data/config.md`. Write both files and read them back.
 
 **Step 6 — Dry run.** Have them drop this week's slides into the right `course_folder` subfolder,
 with Anki open. Run the `anki-week` skill and proceed **only to the Stage-3 preview** — the
 proposal of what would be unsuspended. **Stop there.** Explain that in real use they'd approve or
 trim here, and nothing changes until they do. Point them to `docs/PROMPTS.md` for everyday use and
 remind them: **Anki must be open every time.**
+
+**Step 7 — Send them to the right surface.** Setup is done; the weekly *use* belongs somewhere else.
+Tell them, in plain terms:
+
+> Setup's finished here. For your weekly builds, use **Claude Cowork** — it can open Blackboard in a
+> browser and pull each week's slides down for you. Here in Claude Code I can still build the decks,
+> but you'd have to download the slides yourself first.
+
+If they say they'll stay in Claude Code, that's fine — just make sure they know the trade: they own
+getting the materials into `course_folder` before each run. Don't oversell the switch or repeat it.
 
 ### If they get stuck
 Slow down, do the smallest next action, and verify it with a live tool call before moving on.
