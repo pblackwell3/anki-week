@@ -35,6 +35,13 @@ lectures exist so you know **which materials to go read**. Then you **read those
 the lecture's **concept inventory** to B&B videos. You are picking videos to cover *what the professor
 will actually teach*, not what the lecture title sounds like.
 
+**📄 "Materials" = the professor's slide FILES only — never an Anki deck.** Same definition as
+`anki-week`: `.pptx` / `.ppt` / `.pdf` in `<course_folder>/<Course>/Week <n>/`, or fetched from
+`blackboard_url`. **An Anki deck named `Meharry Slides`** (or any slides-named deck) is pre-made cards,
+**not** the lecture — never read it for the concept inventory, and never let it count as "materials
+found." Checking for materials is a **file check**; no PPTX/PDF → the lecture has no materials → the
+fetch ladder → Blackboard. This skill touches Anki only to size your **review load**, never for scope.
+
 **⬆️ The floor rule: never plan LESS video than the materials require.** If a lecture's concepts span
 three B&B videos, schedule all three — a single title-matched video that covers half the lecture is a
 planning failure. Going **bigger** (an extra adjacent video, a deeper section) is fine; going smaller
@@ -68,7 +75,7 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 |---|---|---|
 | 0 · Week | Resolve the target week (default: coming Mon–Sun) from `config.md`. | — |
 | 1 · Lectures | Read the week's `IM (NN)` sessions from the Class calendar → ordered lecture list. **This is the index of what to read next, not the scope.** | `list_events` |
-| **1.4 · Fetch** | Any lecture with no materials in `<course_folder>/<Course>/Week <n>/` → **fetch before mapping**. See *Materials missing → FETCH* below. | browser |
+| **1.4 · Fetch** | Any lecture with no **PPTX/PDF on disk** in `<course_folder>/<Course>/Week <n>/` → **fetch before mapping** (an Anki `Meharry Slides` deck does not count as having materials). See *Materials missing → FETCH* below. | browser |
 | **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
 | 2 · Busy | Read Personal calendar; per day, subtract window events → free intervals in the 2–8 PM window. | `list_events` |
 | 3 · Anki | Reserve a daily review block from recent review volume (`find_notes deck:… rated:N`), or the fixed fallback. Reviews go first. | `find_notes` |
@@ -93,8 +100,8 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 ### Materials missing → FETCH, never silently degrade
 
 Same rule as `anki-week` — a missing file must not quietly become a title-derived guess. For any
-lecture with nothing in `<course_folder>/<Course>/Week <n>/`, work this ladder and stop at the first
-rung that succeeds:
+lecture with **no PPTX/PDF** in `<course_folder>/<Course>/Week <n>/` — a `Meharry Slides` deck in Anki
+is not a substitute and does not skip this ladder — work it and stop at the first rung that succeeds:
 
 1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
    download the missing files into that lecture's week folder. Not logged in → **STOP and ask the user
@@ -115,6 +122,9 @@ lecture is called, the materials say what it teaches, and only the second one pi
 - Placing study in the morning or over an existing block — blocks go only in computed free window intervals.
 - **Mapping videos without reading the materials.** The calendar title is a pointer to the lecture, not
   the lecture. Read the slides, then map.
+- **Treating an Anki deck as the lecture materials.** A deck named **`Meharry Slides`** is someone's
+  pre-made cards — mapping videos off it means covering *their* card selection instead of the
+  professor's slides. Materials are **files**; no file → fetch from Blackboard.
 - **Stopping at one video per lecture.** A lecture routinely spans several B&B leaves; one title-matched
   video that covers a third of the slides leaves you unprepared. Map the whole inventory.
 - Mapping by lecture title keyword instead of subject (e.g. a "Cell Signaling" lecture → the right B&B

@@ -33,18 +33,25 @@ inventory is the **coverage floor** for Stages 1–4.5.
 deck must cover*. Never map cards straight off a calendar title or a syllabus line — that is the IM04
 failure mode.
 
+**📄 "Materials" = the professor's slide FILES — `.pptx` / `.ppt` / `.pdf` in the week folder (or pulled
+from Blackboard). An Anki deck is never materials.** In particular a deck named **`Meharry Slides`** is
+pre-made cards, not the lecture: **never** read it to build `concepts[]`, and **never** count it as
+"materials present." The only thing Anki supplies in this skill is the **card library** (`deck_name` /
+`tag_namespace`). If the PPTX/PDF isn't on disk, the lecture has **no materials** → step 5 / the fetch
+ladder → Blackboard.
+
 **First: sync** — run the start-of-run sync from *Multi-device sync* above (`git pull` + Anki `sync`) so you begin from the latest brain + cards.
 
 1. **Read config** from `data/config.md` (course folder path, deck name, cap, tag prefix).
 2. **Calendar = the INDEX of what to read.** Read the week's lecture events from the Meharry calendar (id in `config.md`) via `list_events`. The events (`IM (n) <Lecture>`) enumerate **which lectures exist this week**, the Mon–Fri boundary, and any exam/holiday — so you know **which materials to hunt down**. It is an index, **not a scope**: never map a lecture from its calendar title. NOTE the imported gcal can DROP a lecture (it omitted IM17 Normal Flora) — cross-check the list against the syllabus Course Outline.
-3. **READ THE MATERIALS — the primary pass.** For every lecture the calendar named, locate and fully read its materials in `<course_folder>/<Course>/Week <n>/` (materials sit **directly inside**). This is the step that defines scope:
+3. **READ THE MATERIALS — the primary pass.** For every lecture the calendar named, locate and fully read its **slide files** in `<course_folder>/<Course>/Week <n>/` (they sit **directly inside**). **This is a filesystem check — you are looking for PPTX/PDF files, not for anything inside Anki.** This is the step that defines scope:
    - `*.pptx` / `*.ppt` → full slide text via the **pptx** skill (legacy `.ppt` binary → the PowerPoint-atom parser; see `config.md`).
    - `*.pdf` → full text via the **pdf** skill / **PyMuPDF** (see `config.md` — the old zlib method mangles CID PDFs).
    - optional `refs.md` / `notes.md` → resource refs. Skip non-lecture files (e.g. "How to Learn Anatomy", Anatomage links, sample-question decks).
    - **Enumerate a concept inventory per lecture** — every distinct thing the slides teach: definitions, named frameworks/lists, mechanisms, numbers/kinetics, diagrams, drugs/diseases named. Read the *whole* deck, not just title/objective slides. This list is what Stage 4.5 audits against, so be exhaustive: **a concept you fail to write down is a concept the deck will silently miss.**
    - **A lecture's folder can be incomplete** (Week 1's folder missed all immunology). Missing materials ≠ no lecture — the calendar already told you it exists; go to step 5.
 4. **Syllabus = cross-check + supplement.** Read the course syllabus (path in `config.md`; extract the .docx via `unzip -p <docx> word/document.xml`, split on `</w:tr>`/`</w:tc>`, strip tags). Its **Course Outline** table gives each lecture's Learning Objectives + the exam structure (`Session # == IM (#)`). Use them to **catch what the slides imply but don't spell out** — an objective naming something absent from your inventory **adds** to the floor. Objectives may **only widen** scope, never narrow it: never drop a slide concept because the syllabus omits it.
-5. **No materials posted yet?** Do NOT hold the lecture. Build it **generously from the objectives** (then the title), scope **deliberately wide** — there is no material floor to measure against, so err large — and mark the deck **🚧**. Reconcile via a full Stage-4.5 pass when the materials land (that's what flips 🚧 → Final).
+5. **No materials posted yet?** (= no PPTX/PDF in the week folder **and** the fetch ladder failed — *not* "there's a `Meharry Slides` deck in Anki," which changes nothing here.) Do NOT hold the lecture. Build it **generously from the objectives** (then the title), scope **deliberately wide** — there is no material floor to measure against, so err large — and mark the deck **🚧**. Reconcile via a full Stage-4.5 pass when the materials land (that's what flips 🚧 → Final).
 6. **Fallbacks:** if no folder at all, accept slides/refs pasted in chat. If a connector is unavailable, ask the user for the missing piece — never invent concepts.
 7. Consolidate per lecture into `concepts[]` (the floor) + `resource_refs[]` (precise) for Stages 1–2.
 8. **Build the SCOPE SPEC** — the input the Selection Protocol runs on (`config.md` → *Scope = tags ∩ slides*). Regenerate it every run from the slides; it needs no prior domain knowledge, which is what lets this work on any lecture:

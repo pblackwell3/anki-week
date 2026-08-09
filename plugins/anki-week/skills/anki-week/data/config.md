@@ -5,7 +5,7 @@ Meharry M1 preset; the rows marked **← SET THIS** are yours.
 
 | Key | Value | Notes |
 |---|---|---|
-| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Your local folder of lecture slides. Layout: `<course_folder>/<Course>/Week <n>/` with the PPTX/PDF directly inside. When a lecture's materials are missing here, Stage 0 fetches them from `blackboard_url` rather than building without them. |
+| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Your local folder of lecture slides. Layout: `<course_folder>/<Course>/Week <n>/` with the PPTX/PDF directly inside. When a lecture's materials are missing here, Stage 0 fetches them from `blackboard_url` rather than building without them. **"Materials" = these slide FILES only.** An Anki deck named `Meharry Slides` (or any slides-named deck) is *not* materials, does not satisfy this check, and is never read for scope — Anki is only the card library (`deck_name` below). |
 | `blackboard_url` | `← SET THIS` (e.g. `https://blackboard.yourschool.edu/`) | Your school's LMS login / course-list page. Stage 0 opens this in a browser (reusing your logged-in session) to download missing lecture materials into `course_folder`. Leave blank only if you always add materials by hand. **No credentials are ever stored — if you're not logged in, the skill stops and asks you to log in.** |
 | `syllabus` | `← SET THIS` (path to your syllabus `.docx`/`.pdf`) | **Read in Stage 0.** Its Course Outline table gives each lecture's Learning Objectives = the authoritative card scope. You already have this as an enrolled student — point the skill at your own copy. |
 | `current_week` | `1` | Curriculum week to build. Bump each week. |

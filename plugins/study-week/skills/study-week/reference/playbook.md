@@ -29,8 +29,10 @@ The full procedure. SKILL.md is the summary; this is what to actually do each ru
 
 ## Stage 1.5 · Read the lecture materials  (MATERIALS-FIRST)
 
-The step that makes the mapping real. For **each lecture** from Stage 1, find and read its materials in
-`<course_folder>/<Course>/Week <n>/` (path in `config.md`; materials sit **directly inside**):
+The step that makes the mapping real. For **each lecture** from Stage 1, find and read its **slide files**
+in `<course_folder>/<Course>/Week <n>/` (path in `config.md`; they sit **directly inside**). **This is a
+filesystem check for PPTX/PDF — not a look inside Anki.** A deck named **`Meharry Slides`** is pre-made
+cards, not the lecture: never read it for the inventory, never count it as materials found.
 
 - `*.pptx` / `*.ppt` → full slide text via the **pptx** skill (legacy `.ppt` binary → PowerPoint-atom parser).
 - `*.pdf` → full text via the **pdf** skill / **PyMuPDF** (the old pure-zlib method mangles CID PDFs).
@@ -42,7 +44,8 @@ is what Stage 4 maps to videos, and it is the **coverage floor**: the chosen vid
 
 **Fallback ladder** (record which rung you used; it drives the confidence flag):
 1. **Materials read** → `confidence: high`.
-2. **No materials posted** → derive the inventory from the **syllabus objectives**, scope it
+2. **No materials posted** (= no PPTX/PDF on disk **and** the fetch ladder failed — a `Meharry Slides`
+   deck in Anki is irrelevant here) → derive the inventory from the **syllabus objectives**, scope it
    generously, mark `confidence: low` and the lecture `🚧 materials pending` in the plan doc.
 3. **No objectives either** → title only, `confidence: low`, and say so explicitly in the doc.
 
