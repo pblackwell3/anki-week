@@ -48,7 +48,9 @@ resource they study from. Confirm the tag exists, then write it to `backbone_res
 unsure, default to `#B&B` and tell them they can change it later.
 
 **Step 5 — Fill config.** Open the anki-week `data/config.md` and set, asking for each:
-`course_folder` (their slides; confirm the path exists if you can), `syllabus` (path to their own
+`course_folder` (the folder holding their **slide files** — PPTX/PDF; confirm the path exists if you
+can, and make clear this is *not* an Anki deck: a deck named `Meharry Slides` is cards, not materials),
+`syllabus` (path to their own
 syllabus `.docx`/`.pdf`), `current_week`, `class_calendar_id` (their class calendar, or blank
 to feed lectures manually), and **`blackboard_url`** — the page they land on when they log into their
 school's LMS. Ask them to open Blackboard and paste the URL from the address bar; that's all it is.

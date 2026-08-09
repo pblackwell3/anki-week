@@ -25,6 +25,26 @@ Turn this week's lectures into the right AnKing Step Deck cards to study. The ca
 
 **Under-covering the lecture and bloating the deck are both build failures.** The intersection is how you avoid trading one for the other. Full rule + the resource table: `data/config.md` → *⭐ THE SELECTION PROTOCOL*.
 
+### 📄 What "lecture materials" MEANS — slide files only, never an Anki deck
+
+Everywhere this skill says **materials** / **slides** / **the lecture**, it means **the professor's
+posted slide files** — `.pptx` / `.ppt` / `.pdf` (and the occasional `.docx` handout) — living at
+`<course_folder>/<Course>/Week <n>/`, or downloaded from `blackboard_url` when they're not there yet.
+**Files on disk. Read with the `pptx` / `pdf` skills.**
+
+**An Anki deck is NEVER lecture materials — not even one named after the slides.** A deck or subdeck
+called **`Meharry Slides`** (or any similar "slides"-named deck in the collection) is *cards someone
+already made*. It is **not** the lecture, **not** a source of scope, and **not** a substitute for the
+PPTX. Do not read it to build a concept inventory, and do not treat its existence as "materials found."
+
+**Anki is used for exactly one thing here: the card library** (`deck_name` = AnKing Step Deck,
+`tag_namespace` = `#AK_Step1_v12`). No deck in the collection is ever a materials source.
+
+**So the check is a FILE check.** "Does this lecture have materials?" = *is there a PPTX/PDF for it in
+its week folder?* If no → the lecture has **no materials** and you go to the fetch ladder
+(*Materials missing → FETCH*) → Blackboard. **A `Meharry Slides` deck sitting in Anki does not answer
+that question and never closes the gap.**
+
 ## Prerequisites (check first, every run)
 
 - **Anki desktop must be OPEN** on this Mac with the **Anki MCP Server** add-on (AnkiWeb code `124672614`) enabled — it serves the `anki` MCP at `http://127.0.0.1:3141`. (NOT AnkiConnect; that's a different add-on and isn't used here.) If `list_decks` / `find_notes` errors, STOP and tell the user to open Anki — change nothing.
@@ -55,7 +75,8 @@ Run the detailed steps in **reference/playbook.md** — it has the exact MCP cal
 ### Materials missing → FETCH, never silently degrade
 
 The calendar names the week's lectures. For **each** one, check
-`<course_folder>/<Course>/Week <n>/` for its materials. If a lecture has none, do **not** proceed to
+`<course_folder>/<Course>/Week <n>/` for its materials — **a PPTX/PDF file on disk; an Anki deck named
+`Meharry Slides` is not a hit.** If a lecture has no slide file, do **not** proceed to
 mapping — work this ladder in order and stop at the first rung that succeeds:
 
 1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
@@ -95,6 +116,7 @@ no schedule.
 
 These first four are the failures that produced mis-scoped/incomplete Week-1 decks (slide-audited 2026-06-27) — they are the reason this skill is materials-driven now:
 
+- **Mistaking an Anki deck for the lecture materials.** A deck named **`Meharry Slides`** is pre-made cards, not the professor's slides. Reading it instead of the PPTX means your concept inventory is *someone else's card selection* — you inherit their omissions and never see the slides the exam is written from. **Materials = a file in the week folder.** No file → fetch from Blackboard; never let a slides-named deck mark the lecture as "materials found."
 - **Mapping before reading the materials → mis-scope.** The calendar title and the syllabus line are *pointers to* the lecture, not the lecture. **Go read the slides first**, then map. "Cell Membrane" (IM04) was mapped to `#Biochem::Cellular` (organelles/ER/Golgi/cytoskeleton) when the lecture is membrane-transport **physiology** (lipid bilayer, osmosis, Na⁺/K⁺-ATPase) in `#Physiology` — ~zero overlap with what was taught. Always **sample-check that a subtree's cards actually match the subject** before committing.
 - **Covering less than the materials.** The material concept inventory is a **floor**. A deck that omits something the professor taught is broken, no matter how clean its tags are.
 - **Unsuspending the wide net.** The net is a *candidate universe*; only entity-intersected survivors get unsuspended. Skipping the intersection is how 429 cards become a deck instead of 77.

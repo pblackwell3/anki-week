@@ -16,7 +16,7 @@ Mornings are left alone; the skill only proposes blocks inside the study window 
 
 | Key | Value | Notes |
 |---|---|---|
-| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Local archive, **same path as `anki-week`'s config**. Layout: `<course_folder>/<Course>/Week <n>/` with materials directly inside. A week can span multiple `<Course>` folders — gather all `*/Week <n>/`. |
+| `course_folder` | `← SET THIS` (e.g. `~/Lecture Materials`) | Local archive, **same path as `anki-week`'s config**. Layout: `<course_folder>/<Course>/Week <n>/` with materials directly inside. A week can span multiple `<Course>` folders — gather all `*/Week <n>/`. **"Materials" = these slide FILES (PPTX/PDF) only** — an Anki deck named `Meharry Slides` is not materials, never satisfies this check, and is never read for scope. |
 | `blackboard_url` | `← SET THIS` (e.g. `https://blackboard.yourschool.edu/`) | Your school's LMS login / course-list page. When a lecture's materials are missing from `course_folder`, Stage 1.5 fetches them from here rather than guessing from the title. Same value as `anki-week`'s. **No credentials are stored** — if you're not logged in, the skill stops and asks you to log in. |
 
 ## Study window & caps
