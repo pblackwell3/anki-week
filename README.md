@@ -4,7 +4,9 @@ Two Claude Code skills for medical students:
 
 - **anki-week** — turns a week's lectures into the right **AnKing Step Deck** cards to study, by
   unsuspending + tagging cards that already exist (it never creates cards from scratch) and
-  building one filtered deck per lecture.
+  building one filtered deck per lecture. Scoped to the **body system you're currently in**, so a
+  shared mechanism (say Type IV hypersensitivity in an MSK week) doesn't drag in another block's whole
+  disease pathology — those cards are deferred and re-offered when you reach that block.
 - **study-week** — plans the week's study *time* around those decks: maps each lecture to its
   study video(s), reserves daily Anki-review time, and puts pre-lecture blocks on your calendar as
   real events you can move or delete yourself.

@@ -38,7 +38,7 @@ Be warm, plain-spoken, and **patient**. Assume zero technical background. Drive 
    and its **backbone resource** (e.g. `#B&B`).
 5. Both skills — **anki-week** and **study-week** — installed via `/plugin install` and Claude
    restarted.
-6. The user's **`config.md` filled in** (slides folder, syllabus, current week, tag version,
+6. The user's **`config.md` filled in** (slides folder, syllabus, current week, current block, tag version,
    backbone resource, cap).
 7. A **dry first run** completed up to the preview/approval step (no changes committed).
 
@@ -128,6 +128,12 @@ config file has the `anki` entry.
 plugin's `skills/anki-week/data/` folder) and set, by asking the user for each:
 - `course_folder` — where they keep slides (confirm the path exists if you can).
 - `current_week` — the week to build.
+- `current_block` — **the body system / course block they're in right now** (`MSK`, `Cardio`, `Renal`,
+  `Endo`, `Neuro`, `GI`, `Pulm`, `Repro`, `Heme_Onc`, `Derm`, `Psych`), or **`General`** for a
+  foundations course with no body system (biochem, genetics, general path/immuno, intro micro — most
+  M1 first semesters). One sentence on why: it stops a shared mechanism — Type IV hypersensitivity in
+  an MSK week — from pulling in another block's whole disease pathology, like Type 1 diabetes. Tell
+  them to bump it when the block changes; leave `cross_system_policy` at `bridge`.
 - `syllabus` — path to their **own** copy of the syllabus (`.docx`/`.pdf`); if they have none, note
   the skill will fall back to slides.
 - `tag_namespace` — the version you detected in Step 3.
