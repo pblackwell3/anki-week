@@ -10,7 +10,10 @@ The full procedure. SKILL.md is the summary; this is what to actually do each ru
   unreachable, don't fail: fall back to objectives/title and mark every mapping `low-confidence`.
 - **Anki MCP** reachable **only if** `anki_reserve_mode = rolling-avg` — Anki desktop open with the
   add-on. If it's not reachable, don't fail: use `anki_reserve_fallback_min` and flag it in the doc.
-- `data/bb-videos.json` present. If B&B has changed, rebuild it: `python3 data/build-bb-videos.py <pdf>`.
+- `data/bb-videos.json` present — **schema_version 2**, 502 videos, each with a `video_index` keyword
+  list + `description` + First Aid page refs, plus a top-level `title_aliases` map. Refresh it by
+  re-extracting from the logged-in B&B web app; **`build-bb-videos.py` writes the legacy v1 schema
+  (titles/runtimes only) and would throw the index away** — don't point it at this file.
 
 ## Stage 0 · Resolve the week
 
@@ -99,6 +102,19 @@ For each lecture, in order:
    concept, not lecture by lecture.** Walk the inventory and ask "which video teaches this?" A lecture
    spanning cell signaling + second messengers + receptor classes maps to **all three** videos.
    **Several videos per lecture is the normal case**, not an exception.
+   - **Match against `video_index` first, not the title.** Schema v2 carries the site's own index —
+     18,667 verbatim fragments across 502 videos (`"ulcers, peptic"`, `"Meyer-Overton rule"`). They're
+     keyword fragments, **for substring matching, not display**: lowercase both sides and test
+     containment each way, and remember the index inverts phrases (search `peptic` *and* `ulcer`).
+     This is what makes concept-level mapping work where a title match fails.
+   - Then read the video's **`description`** to confirm the subject really is the concept (the
+     keyword ≠ subject check), and use **`first_aid_2026`** page refs to cross-check against a lecture's
+     First Aid reference when the slides give one.
+   - **5 videos genuinely have no index** (`Common Musculoskeletal Conditions`, `Brain Injury`,
+     `Hypoxemia`, `Asthma and Bronchiectasis`, `Pneumonia II`) — an empty `video_index` is absent on the
+     site, not a capture failure. Map those by title + `description`.
+   - `first_aid_forward` lists topics a video defers to a later one — a useful signal that the concept
+     you're chasing lives in a *different* video than the title suggests.
 3. **Coverage check (the floor):** lay the chosen video set against the inventory and mark any concept
    no video covers. Try a wider/adjacent leaf to close it. If nothing covers it, record it as a
    **`coverage_gap`** for the plan doc — you need to know that part of the lecture has no video

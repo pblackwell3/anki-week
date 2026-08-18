@@ -63,8 +63,14 @@ coverage to make the calendar look tidy.
   (title/objective-derived) and the plan doc must say so.
 - **Anki MCP** only if `anki_reserve_mode = rolling-avg` — else it uses the fixed fallback. If Anki is
   down, the skill still runs and flags the estimate as unavailable.
-- `data/bb-videos.json` present — the B&B library (22 subjects / **496 videos**). Rebuild when B&B
-  changes: `python3 data/build-bb-videos.py <checklist.pdf>` (PyMuPDF, falling back to macOS PDFKit).
+- `data/bb-videos.json` present — the B&B library, **schema_version 2** (22 subjects / **502 videos** /
+  9,003 min), extracted live from the logged-in Boards & Beyond web app (2026-08-18). Each video now
+  carries **`video_index`** (18,667 verbatim keyword fragments — the site's own index, for substring
+  matching), a **`description`**, **`first_aid_2026` / `first_aid_2025`** page refs,
+  `first_aid_forward`, `last_modified` and `quiz_count`. Top level also holds **`title_aliases`**
+  (every renamed v1 title → its current title). **`data/build-bb-videos.py` builds the legacy v1
+  schema from the checklist PDF (titles + runtimes only) — don't run it over this file**; re-extract
+  from the web app instead.
 - `data/watched-videos.md` — what you have already watched. Read every run; empty is fine.
 
 ## The procedure
@@ -79,7 +85,7 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 | **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
 | 2 · Busy | Read Personal calendar; per day, subtract window events → free intervals in the 2–8 PM window. | `list_events` |
 | 3 · Anki | Reserve a daily review block from recent review volume (`find_notes deck:… rated:N`), or the fixed fallback. Reviews go first. | `find_notes` |
-| 4 · Map | Map each lecture's **concept inventory** → the B&B leaf video(s) that **cover all of it** (reuse `data/lecture-map.md`); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read `bb-videos.json`, `watched-videos.md` |
+| 4 · Map | Map each lecture's **concept inventory** → the B&B leaf video(s) that **cover all of it** (reuse `data/lecture-map.md`, then match concepts against each video's **`video_index`** / `description`); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read `bb-videos.json`, `watched-videos.md` |
 | 5 · Pack | Greedy earliest-fit: place each video before its lecture, front-loading light days, honoring caps; flag anything that won't fit. | — |
 | 6 · Emit | Write the plan doc → create **committed** events (no prefix, Banana, **BUSY**, 120+15 reminders, `[study-week:<week>]` in the description) → log run + event ids → append new mappings → confirm which of *last* run's videos were watched and record them. | `create_event`, Write |
 
@@ -93,7 +99,7 @@ Run the detailed steps in **reference/playbook.md**. Summary:
   approval step. Never touch events with other attendees. **You move or delete them yourself, and
   a re-run respects that** (a still-existing block is left where you put it, never recreated or
   re-timed).
-- **B&B primary lens:** map by subject via `bb-videos.json`; dedupe shared videos.
+- **B&B primary lens:** map by subject via `bb-videos.json` — **match concepts against `video_index`, not titles** (that's what the v2 index is for); dedupe shared videos.
 - **Cover the materials:** the mapped video set must cover the lecture's whole concept inventory.
   Under-covering is a defect; over-covering is fine. Surface uncovered concepts in the plan doc.
 
@@ -146,7 +152,7 @@ lecture is called, the materials say what it teaches, and only the second one pi
 ## Artifacts
 
 - `data/config.md` — calendars, window, caps, Anki knobs. **Edit first.**
-- `data/bb-videos.json` — B&B video library (subject → sections → videos). Rebuilt via `build-bb-videos.py`.
+- `data/bb-videos.json` — B&B video library, schema v2 (subject → sections → videos, each with `video_index`, `description`, First Aid page refs) + `title_aliases`. Web-app extraction; `build-bb-videos.py` is the legacy v1 PDF builder.
 - `data/lecture-map.md` — confirmed lecture→B&B mappings; grows each run.
 - `data/watched-videos.md` — **the watched memory**: videos already consumed, so they aren't re-staged.
 - `data/run-log.md` — per-week audit trail + created event ids (undo/replace).

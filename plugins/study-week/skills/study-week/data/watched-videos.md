@@ -9,9 +9,14 @@ Companion to `bb-videos.json` (what *exists*). This file is what's been *consume
 ## Matching rule
 
 - **Key = the video title**, matched case-insensitively with whitespace collapsed.
-  Verified 2026-07-31: all **496** titles in `bb-videos.json` are **globally unique**, so the title
-  alone is unambiguous — the `Subject` column is for your reading, not for matching.
-- A title here that matches **no** video in `bb-videos.json` is a **typo or a renamed video** →
+  Re-verified 2026-08-18 against schema v2: all **502** titles in `bb-videos.json` are **globally
+  unique**, so the title alone is unambiguous — the `Subject` column is for your reading, not for
+  matching.
+- A title here that matches no video **must be checked against `bb-videos.json`'s `title_aliases`
+  before it's called a miss** — B&B renamed 20 videos (`Trisomies` → `Trisomy Disorders`,
+  `Cushing's Syndrome` → `Cushing Syndrome`, `Beta Thalassemias` → `Beta Thalassemia`, …), and an
+  alias hit is a **match**, not an error. Update the row to the current title as you go.
+- A title that matches neither a video nor an alias is a **typo or a retired video** →
   study-week flags it in the plan doc rather than silently ignoring it. Fix the spelling, or drop the
   row if B&B retired the video.
 - `Status`: `watched` (done) · `partial` (started, not finished — treated as **NOT watched**, it still

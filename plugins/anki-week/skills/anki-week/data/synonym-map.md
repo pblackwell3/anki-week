@@ -1,10 +1,14 @@
 # anki-week — Synonym Map (entity aliases for the intersection step)
 
-The **one piece of ongoing tuning** in the Selection Protocol (`config.md` → *Scope = tags ∩ slides*).
+The **one piece of ongoing tuning** in the Selection Protocol (`config.md` → *Scope = tags ∩ slides ∩ system*).
 
 Scoping keeps a card when its tag or content **names a Scope-Spec entity**. That match fails whenever
 the slides and AnKing use *different words for the same thing* — so the card is silently dropped and
 shows up later as a phantom coverage gap. Every row here converts one such miss into a hit.
+
+> A 0-card entity has **two** possible causes now: a synonym miss (this file) or an over-tight
+> **system gate** (the cards exist but were filed as deferred). Check the deferred set before you add
+> an alias — and never treat a floor concept as deferred (`config.md` → *🧭 The system gate*, step 3).
 
 **Growing this file carries coverage from ~90% toward ~95%.** It is the highest-leverage upkeep in the
 skill.

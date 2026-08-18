@@ -1,6 +1,6 @@
 {
   "name": "anki-week",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Build a week's AnKing Step Deck study set from lecture materials — map each lecture's objectives to AnKing cards, unsuspend + tag them, build a filtered deck per lecture, coverage-audit every objective, then hand off to study-week. Requires Anki desktop open with the Anki MCP Server add-on (code 124672614).",
   "author": { "name": "pblackwell3", "url": "https://github.com/pblackwell3" },
   "repository": "https://github.com/pblackwell3/anki-week",

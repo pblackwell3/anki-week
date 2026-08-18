@@ -46,6 +46,15 @@ Paste any of these into Claude (tweak the bracketed parts).
 - *"Build me one filtered deck combining all lectures tagged for [exam/block] for a cram session."*
 - *"Make a filtered deck of just the cards I've been failing in [lecture]."*
 
+## Block scope (cross-system bleed)
+
+- *"I'm in the [MSK] block now — update `current_block` before you build."*
+- *"This deck pulled the whole pathology of [disease] just because the lecture mentioned [mechanism]. Gate it to my block and defer the rest."*
+- *"Show me the system split for [lecture]: what's in-block, what's a bridge card, what got deferred."*
+- *"I'm starting the [Endo] block — pull the sets you deferred for Endo in earlier weeks."*
+- *"Don't cut the [receptor] map — the professor taught the whole table; only defer the disease management."*
+- *"Which cards in [block]'s decks aren't actually [block] cards?"* (the bleed check)
+
 ## Reconcile / fix
 
 - *"The slides for [lecture] just dropped — reconcile that deck against them and flip it to Final."*

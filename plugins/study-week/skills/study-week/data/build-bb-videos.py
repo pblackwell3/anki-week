@@ -1,8 +1,16 @@
 #!/usr/bin/env python3
-"""Parse the Boards & Beyond Step-1 checklist PDF into structured JSON.
+"""Parse the Boards & Beyond Step-1 checklist PDF into structured JSON (LEGACY schema v1).
+
+⚠️  SUPERSEDED — this builds the v1 shape: titles + runtimes only. The shipped
+    data/bb-videos.json is **schema_version 2**, extracted live from the logged-in
+    B&B web app, and additionally carries per-video video_index (the site's keyword
+    index, ~18.7k fragments), description, First Aid page refs, last_modified and
+    quiz_count, plus a top-level title_aliases map. Concept-level mapping depends on
+    those fields. Running this script over bb-videos.json would throw them away —
+    write to a different path, or re-extract from the web app instead.
 
 Usage:
-    python3 build-bb-videos.py <checklist.pdf> [out.json]
+    python3 build-bb-videos.py <checklist.pdf> [out.json]   # default out: bb-videos.json — CHANGE IT
 
 Text extraction tries PyMuPDF first (portable — works on Linux/Cowork as well as
 the Mac; `pip install pymupdf`), then falls back to macOS PDFKit via osascript/JXA

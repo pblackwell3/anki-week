@@ -22,7 +22,7 @@ whole setup.
 3. The `anki` MCP connected in Claude and verified by you calling a read-only tool.
 4. The AnKing Step Deck present and its **version detected** (e.g. `#AK_Step1_v12`).
 5. The user's **`backbone_resource`** chosen from what's actually in their deck.
-6. `config.md` filled: `course_folder`, `syllabus`, `current_week`, `class_calendar_id`.
+6. `config.md` filled: `course_folder`, `syllabus`, `current_week`, **`current_block`**, `class_calendar_id`.
 7. A **dry first run** completed to the Stage-3 preview (no changes committed).
 
 ## Steps
@@ -51,13 +51,21 @@ unsure, default to `#B&B` and tell them they can change it later.
 `course_folder` (the folder holding their **slide files** — PPTX/PDF; confirm the path exists if you
 can, and make clear this is *not* an Anki deck: a deck named `Meharry Slides` is cards, not materials),
 `syllabus` (path to their own
-syllabus `.docx`/`.pdf`), `current_week`, `class_calendar_id` (their class calendar, or blank
+syllabus `.docx`/`.pdf`), `current_week`, **`current_block`**, `class_calendar_id` (their class calendar, or blank
 to feed lectures manually), and **`blackboard_url`** — the page they land on when they log into their
 school's LMS. Ask them to open Blackboard and paste the URL from the address bar; that's all it is.
 Explain what it buys them: when a lecture's slides aren't in `course_folder` yet, the skill downloads
 them instead of building a deck off the lecture title. **Never ask for their LMS password** — the skill
 reuses whatever browser session they're already logged into. Set the same `blackboard_url` and
 `course_folder` in study-week's `data/config.md`. Write both files and read them back.
+
+For **`current_block`**, ask plainly: *"which body system or block are you in right now?"* — MSK,
+Cardio, Renal, Endo, Neuro, GI, Pulm, Repro, Heme/Onc, Derm, Psych. If they're in a foundations /
+pre-clinical course (biochem, genetics, general pathology, general immunology, intro micro — most M1
+first semesters), the answer is **`General`**. Tell them why it matters in one sentence: *it stops a
+shared mechanism — say Type IV hypersensitivity in an MSK week — from dragging in another block's
+whole disease pathology, like Type 1 diabetes.* Remind them to bump it when the block changes; a
+stale block mis-scopes every deck that week. Leave `cross_system_policy` at its default (`bridge`).
 
 **Step 6 — Dry run.** Have them drop this week's slides into the right `course_folder` subfolder,
 with Anki open. Run the `anki-week` skill and proceed **only to the Stage-3 preview** — the

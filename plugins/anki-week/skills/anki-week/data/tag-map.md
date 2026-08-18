@@ -13,6 +13,60 @@ exists in the **resource trees** (e.g. B&B `…Cardiac_Auscultation::01_Heart_Mu
 `::02_Heart_Sounds`). So: use `^Systems` leaves for "one lecture ≈ one concept cluster";
 drop to a **resource leaf** when a lecture is narrower than the Systems leaf.
 
+## 🧭 Block → `^Systems` node  (the system-gate lookup)
+
+`config.md`'s `current_block` is a course-block name; the gate needs the **real `^Systems` child node**
+in this collection. Confirm each row the first time you build in that block — `get_tags` filtered by
+the `#AK_Step1_v12::^Systems::` prefix (or the Anki browser tag tree) — and correct anything that
+doesn't match. **Only `Cardio` is verified so far**; the rest are the expected names, unverified.
+
+| `current_block` | `^Systems` node | Status |
+|---|---|---|
+| `Cardio` | `^Systems::Cardio` | ✅ verified (HeartSounds leaf, 31 cards) |
+| `MSK` | `^Systems::MSK` | ⬜ verify on first MSK build |
+| `Endo` | `^Systems::Endo` | ⬜ |
+| `GI` | `^Systems::GI` | ⬜ |
+| `Renal` | `^Systems::Renal` | ⬜ |
+| `Pulm` | `^Systems::Pulm` | ⬜ |
+| `Neuro` | `^Systems::Neuro` | ⬜ |
+| `Psych` | `^Systems::Psych` | ⬜ |
+| `Repro` | `^Systems::Repro` | ⬜ |
+| `Heme_Onc` | `^Systems::Heme_Onc` | ⬜ |
+| `Derm` | `^Systems::Derm` | ⬜ |
+| **`General`** | *(no node — system-agnostic only)* | ✅ by definition. A foundations block (biochem, genetics, general path/immuno, intro micro) has **no** body system: core = cards with no organ-system home. **The M1 IM course is `General`.** |
+
+> A card carrying **several** `^Systems` nodes is core if **any** of them matches the block.
+> A card carrying **none** falls through to its resource chapter, then to system-agnostic.
+
+## 🧲 Cross-system attractors  (gate these hard)
+
+Concepts that are **mechanisms taught in one block but carded under every system that has a disease
+using them.** They pass the entity intersection everywhere, so they are exactly where cross-system
+bleed comes from — the Stage-2b gate is **mandatory** on these, and Stage 3 must show their split.
+
+| Attractor | Home teaching | Bleeds in from | Watch for |
+|---|---|---|---|
+| **Hypersensitivity types I–IV** | general immuno | **Endo (DM1)** · GI (celiac) · Derm (contact dermatitis) · ID (TB/PPD) · MSK (RA) · Heme (transfusion rxn) | **the founding case:** Type IV in an MSK week pulling DM1 autoantibodies/DKA/insulin. Bridge card = *"DM1 is which type?"*; deferred = everything else about DM1. |
+| Inflammation / mediators | general path | every system's acute disease | organ-specific presentations riding in on "acute inflammation" |
+| Apoptosis / necrosis | general path | Cardio (MI), Neuro (stroke), Heme | infarct-specific depth |
+| Autoimmunity / HLA associations | general immuno | MSK · Endo · GI · Neuro | whole-disease workups behind one HLA card |
+| Granulomas | general path | Pulm (TB/sarcoid) · GI (Crohn) | full TB or Crohn management |
+| Amyloid | general path | Cardio · Renal · Neuro | organ-specific amyloidosis workup |
+| Cell signaling / 2nd messengers | general physio | **Endo (insulin, GPCR hormones)** · Cardio | hormone-axis pathology behind an RTK card |
+| **Adrenergic / cholinergic receptors** (α1 α2 β1 β2, M/N) | basic pharm + autonomic physio | **Cardio** (HF, antiarrhythmics, HTN) · **Pulm** (asthma/COPD regimens) · Renal · GI · Ophtho | ⚖️ **breadth vs depth.** The **tissue map** (β1 heart · β2 lung · α1 vessels) is the concept — core whenever the slides teach the table, lung and heart rows included. What defers is the *therapeutics* in those organs (asthma step-therapy, β-blocker selection in HF). In a block that only **uses** one row — MSK noting β2-agonist tremor — only that row is core and the cross-body map defers. |
+| Collagen / ECM | biochem | MSK · Derm · Cardio (aortic) | Ehlers-Danlos/Marfan depth |
+| Cytokines | general immuno | every system | disease-specific cytokine cards |
+| Vitamin & mineral deficiencies | biochem | GI · Heme · Neuro · Derm | full deficiency-syndrome workups |
+| Inheritance patterns | genetics | every system's genetic disease | whole disease profiles behind a pedigree card |
+| Edema / Starling forces | physio | Cardio (CHF) · Renal · Hepatic | CHF/cirrhosis management |
+
+> Append a row whenever an entity turns out to pull from ≥2 foreign systems in a build — that is the
+> signal that it's an attractor, and the next run will gate it before it overpulls.
+>
+> ⚖️ **An attractor row is not a block-list.** It says *gate this carefully*, never *cut it*. For every
+> attractor the shared mechanism and its distribution stay core; only the other systems' disease depth
+> defers — and how much of the distribution counts as "the concept" is set by what the slides taught.
+
 ## Seed: Cardio (verified against the live collection 2026-06-20)
 
 | Topic / resource ref | Leaf tag(s) | Notes |
@@ -32,6 +86,10 @@ drop to a **resource leaf** when a lecture is narrower than the Systems leaf.
 - Prefer **leaf** tags (one-lecture-sized). Pick the altitude that matches lecture granularity:
   `^Systems` leaf for a broad lecture, resource leaf for a narrow one.
 - When a topic legitimately spans two systems, list both leaves on separate rows.
+- Note each leaf's **home system** when it isn't obvious from the tag — the system gate reads it, and a
+  resource leaf (`#FirstAid::09_Endocrine::…`) is what tells the gate a card is Endo when the card
+  carries no `^Systems` tag.
+- Add an attractor row (above) for any entity that pulled cards from ≥2 foreign systems this run.
 
 <!-- New mappings appended below this line -->
 
