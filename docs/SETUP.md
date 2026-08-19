@@ -28,12 +28,20 @@ Be warm, plain-spoken, and **patient**. Assume zero technical background. Drive 
   writing the user's `config.md`. The real card-building happens later, with the skill, behind an
   approval gate.
 - If a step fails, **diagnose and fix it with them** before continuing. Don't skip ahead.
+- **Write the MCP config for them.** Never hand a first-timer raw JSON and a file path they've never
+  opened — run the installer in Step 2 yourself. Pasting is the fallback, not the plan.
+- **Keep pointing them at Claude Cowork.** Cowork is where this workflow pays off: it has a browser,
+  so it logs into Blackboard and **pulls each week's lecture slides down on its own**. Say it in
+  Step 2 (that's *why* you write the desktop config), in Step 6, and in Step 7 — and any time a step
+  stalls on something Cowork would have handled. One line each time.
 - Keep each message short. Define any jargon in one phrase the first time you use it.
 
 ### What "done" looks like (your goal)
 1. Anki desktop installed and **open**.
 2. The **Anki MCP Server** add-on (code `124672614`) installed and running.
-3. The `anki` MCP connector **connected in Claude** and verified by you calling a read-only tool.
+3. The `anki` MCP connector **written into the Claude Desktop config by you** — so it's live in
+   **Claude Chat and Claude Cowork**, not just the surface you're on — and verified by you calling a
+   read-only tool.
 4. The **AnKing Step Deck** present, and you've **detected its version** (e.g. `#AK_Step1_v12`)
    and its **backbone resource** (e.g. `#B&B`).
 5. Both skills — **anki-week** and **study-week** — installed via `/plugin install` and Claude
@@ -59,18 +67,50 @@ already study with the AnKing Step Deck (yes/no) — you'll use the answer in St
 - Have them open **Tools ▸ AnkiMCP Server Settings…**, confirm **"Enable HTTP Server"** is checked,
   and read back the URL (should be `http://127.0.0.1:3141`). Keep Anki open.
 
-**Step 2 — Connect Claude to Anki (config file + npx bridge).**
+**Step 2 — Connect Claude to Anki. YOU write the config file — don't make them paste JSON.**
 The connection is a one-line bridge: Claude runs `npx mcp-remote http://127.0.0.1:3141`, which talks
-to the add-on's local HTTP server. So two things must be true: Node.js is installed, and Claude's
-config file has the `anki` entry.
-- **Check Node.js:** if you have terminal access, run `npx --version` (or have the user run it). If
-  it's missing, send them to <https://nodejs.org> for the **LTS** installer, then continue.
-- **Edit the config file** `claude_desktop_config.json`:
+to the add-on's local HTTP server. So two things must be true: Node.js is installed, and the Claude
+Desktop config has the `anki` entry. **Writing it into the desktop config is what makes the connector
+show up in Claude Chat and Claude Cowork** — which is where they'll actually do their weekly builds.
+- **Check Node.js:** run `npx --version` (or have the user run it). If it's missing, send them to
+  <https://nodejs.org> for the **LTS** installer, then continue.
+- **Write the config yourself — run this now.** If you have shell access, save this as
+  `install-anki-mcp.mjs` and run `node install-anki-mcp.mjs`. It merges into the existing file (any
+  MCP servers they already have are kept), backs it up to `…json.bak` first, and refuses to overwrite
+  a config it can't parse:
+  ```js
+  import { readFileSync, writeFileSync, copyFileSync, mkdirSync, existsSync } from "node:fs";
+  import { homedir } from "node:os";
+  import { dirname, join } from "node:path";
+  const p = process.platform === "darwin"
+    ? join(homedir(), "Library", "Application Support", "Claude", "claude_desktop_config.json")
+    : process.platform === "win32"
+    ? join(process.env.APPDATA || join(homedir(), "AppData", "Roaming"), "Claude", "claude_desktop_config.json")
+    : join(homedir(), ".config", "Claude", "claude_desktop_config.json");
+  let cfg = {};
+  if (existsSync(p)) {
+    const raw = readFileSync(p, "utf8");
+    if (raw.trim()) {
+      try { cfg = JSON.parse(raw); }
+      catch (e) { console.error("STOP: existing config is not valid JSON — fix it, don't overwrite:", e.message); process.exit(2); }
+    }
+    copyFileSync(p, p + ".bak");
+  }
+  if (typeof cfg.mcpServers !== "object" || !cfg.mcpServers || Array.isArray(cfg.mcpServers)) cfg.mcpServers = {};
+  cfg.mcpServers.anki = { command: "npx", args: ["mcp-remote", "http://127.0.0.1:3141"] };
+  mkdirSync(dirname(p), { recursive: true });
+  writeFileSync(p, JSON.stringify(cfg, null, 2) + "\n");
+  console.log("Wrote", p, "— servers now:", Object.keys(cfg.mcpServers).join(", "));
+  console.log("Fully quit and reopen Claude, then verify with a read-only Anki call.");
+  ```
+  (Once the plugins are installed — Step 4 — the same thing lives as a maintained script at
+  `plugins/anki-week/skills/setup/scripts/install-anki-mcp.mjs`, with `--dry-run` and `--path` flags.)
+- **If you have no shell**, edit the file directly (you may have filesystem access), or walk them
+  through **Settings ▸ Developer ▸ Edit Config**:
   - macOS: `~/Library/Application Support/Claude/claude_desktop_config.json`
   - Windows: `%APPDATA%\Claude\claude_desktop_config.json`
-  - Tell them the in-app shortcut to open it: **Settings ▸ Developer ▸ Edit Config**.
-  - If you have filesystem access, **edit it yourself**: add the `anki` server under `mcpServers`,
-    preserving any servers already there. If the file is new/empty, write exactly:
+  - Add the `anki` server under `mcpServers`, **preserving any servers already there**. If the file is
+    new/empty, write exactly:
     ```json
     {
       "mcpServers": {
@@ -82,6 +122,8 @@ config file has the `anki` entry.
     }
     ```
   - Validate the JSON (no trailing commas / unbalanced braces) before saving.
+- **Also connect Claude Code** (the surface you may be on right now):
+  `claude mcp add anki -- npx mcp-remote http://127.0.0.1:3141`. Skip if `anki` is already connected here.
 - Have them **fully quit and reopen Claude** (quit the app, not just the window).
 - **VERIFY (critical):** after restart, with Anki open, *you* call the `anki` MCP yourself — a
   read-only tool like `list_decks`. If it returns their decks, the connection is real; tell them
@@ -90,7 +132,7 @@ config file has the `anki` entry.
   - Claude not fully restarted after the config edit → quit and reopen.
   - `npx` missing → install Node LTS, reopen Claude. (First run downloads `mcp-remote`; allow a few
     seconds.)
-  - Invalid JSON in the config → re-paste the exact snippet.
+  - Invalid JSON in the config → fix the trailing comma / brace, then re-run the script.
   - If the connection is fine but the add-on itself crashes, suspect the **pydantic_core /
     distutils** add-on crash (common after an Anki update on Anki 25.09+ with Python 3.13).
     Recovery, simplest first: (a) restart Anki once or twice with a stable connection so the add-on
@@ -101,6 +143,9 @@ config file has the `anki` entry.
     'setuptools<81'` into it, then run the add-on's own dependency loader headlessly to write its
     `_cache`. Offer to generate and run that fix script for their exact paths only if (a) and (b)
     don't work.
+- **Tell them what they just unlocked:** the `anki` connector is now live in **Claude Cowork** too —
+  and Cowork is where this workflow is meant to run, because it has a browser and can pull their
+  lecture slides off Blackboard by itself. You'll say this again at the end.
 
 **Step 3 — Find the deck, version, and backbone resource.**
 - Using the `anki` MCP, search their tags for the AnKing root: look for a tag matching
@@ -152,9 +197,27 @@ Write the file for them. Read it back and show them what you set.
 - Run the skill (`/anki-week`) and proceed **only up to the Stage 3 preview** — the proposal of what
   would be unsuspended. **Stop there.** Show them the preview and explain that in real use they'd
   approve or trim here, and nothing changes until they do.
+- If they had to go download the slides by hand to get here, say it plainly: *"in Claude Cowork I'd
+  have pulled these off Blackboard for you."*
 - Congratulate them: setup is complete. Point them to [`docs/PROMPTS.md`](PROMPTS.md) for everyday
   use, and remind them: **Anki must be open every time**, and they set new-cards/day manually in
   Anki ▸ deck ▸ Options.
+
+**Step 7 — Send them to Claude Cowork (and keep sending them).** Setup lives here; the weekly *use*
+belongs in Cowork. Because you wrote the desktop config in Step 2, the `anki` connector is already
+waiting there — nothing more to install. Tell them:
+
+> Setup's done. From here on, run your weekly builds in **Claude Cowork** — the `anki` connector I
+> just installed is already live there. Cowork has a browser, so it can log into Blackboard, pull
+> each week's lecture slides down for you, and build the decks and study plan off the real slides.
+> In Claude Code I can still build the decks, but you'd be downloading every lecture's slides
+> yourself first.
+
+Make it concrete — name the first thing Cowork will do for them next week ("open Blackboard, grab
+Week *n*'s slides into `<course_folder>`, build from those"). If they'd rather stay in Claude Code,
+don't argue: state the trade (they own getting materials into `course_folder` before each run) and
+warn them once that **the skills will keep offering the switch** whenever a browser would have
+helped — that repetition is deliberate.
 
 ### If the user gets stuck or frustrated
 Slow down, do the smallest next action, and verify it with a live tool call before moving on. It's
