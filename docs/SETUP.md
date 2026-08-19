@@ -182,7 +182,12 @@ plugin's `skills/anki-week/data/` folder) and set, by asking the user for each:
 - `syllabus` — path to their **own** copy of the syllabus (`.docx`/`.pdf`); if they have none, note
   the skill will fall back to slides.
 - `tag_namespace` — the version you detected in Step 3.
-- `backbone_resource` — the resource subtree they confirmed in Step 3 (default `#B&B`).
+- `backbone_resource` — the resource subtree they confirmed in Step 3 (default `#B&B`). **Tell them
+  this also picks study-week's video library:** `#Bootcamp` → `bootcamp-videos.json` (Med School
+  Bootcamp, incl. Anatomy Bootcamp), anything else → `bb-videos.json` (Boards & Beyond). Both ship
+  with the plugin; study-week's `config.md` has `video_library` (`auto` | `bb` | `bootcamp` | `both`)
+  if they ever want to override it — e.g. `both` if they watch B&B for preclinical and Bootcamp for
+  anatomy/histology.
 - `deck_name` — the deck name you confirmed.
 - `new_per_day_cap` — ask their comfort level; default 25.
 - `yield_filter` — **ask them which AnKing high-yield tiers to include, and recommend `1+2`.** Lay

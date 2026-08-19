@@ -10,10 +10,24 @@ The full procedure. SKILL.md is the summary; this is what to actually do each ru
   unreachable, don't fail: fall back to objectives/title and mark every mapping `low-confidence`.
 - **Anki MCP** reachable **only if** `anki_reserve_mode = rolling-avg` — Anki desktop open with the
   add-on. If it's not reachable, don't fail: use `anki_reserve_fallback_min` and flag it in the doc.
-- `data/bb-videos.json` present — **schema_version 2**, 502 videos, each with a `video_index` keyword
-  list + `description` + First Aid page refs, plus a top-level `title_aliases` map. Refresh it by
-  re-extracting from the logged-in B&B web app; **`build-bb-videos.py` writes the legacy v1 schema
-  (titles/runtimes only) and would throw the index away** — don't point it at this file.
+- **The video library for this run is resolved first** — `video_library` in `config.md`. On `auto`,
+  read anki-week's `data/config.md` and follow its `backbone_resource`: `#Bootcamp` → `bootcamp`,
+  anything else → `bb`. **If anki-week isn't installed or its config can't be read, default to `bb`**
+  — don't fail, and don't guess from the lecture titles. Everything below that says "the library"
+  means the resolved file(s). **Say which library you used, and how it was resolved, at the top of the
+  plan doc** — a Bootcamp subscriber handed a week of B&B titles has a useless plan, and that line is
+  how they catch it.
+  - `data/bb-videos.json` — **Boards & Beyond**, schema_version 2, 502 videos, each with a
+    `video_index` keyword list + `description` + First Aid page refs, plus a top-level `title_aliases`
+    map. Refresh it by re-extracting from the logged-in B&B web app; **`build-bb-videos.py` writes the
+    legacy v1 schema (titles/runtimes only) and would throw the index away** — don't point it at this file.
+  - `data/bootcamp-videos.json` — **Med School Bootcamp**, same schema_version 2 shape
+    (`subjects → sections → videos`, `title` / `minutes` / `video_index` / `title_aliases`), so every
+    stage below works unchanged. 26 subjects, 2,724 catalog entries (2,705 unique videos), 26,175 min,
+    spanning Step 1 Preclinical, Step 2 Clinical (Preview), and Anatomy Bootcamp (Gross Anatomy,
+    Neuroanatomy, Histology, OMM). Differences that matter: `description` is `null` throughout,
+    matching leans on `source_keywords`, and **titles are not unique** — see Stage 4.
+  - `both` → map against both files and label every video with its library everywhere it appears.
 
 ## Stage 0 · Resolve the week
 
@@ -88,9 +102,9 @@ its confidence flag so you know the prep is a guess.
   3. `reserve_min = round(per_day_cards * anki_sec_per_card / 60)`, clamped to
      `[0, anki_reserve_cap_min]`.
 - The reserve is one `Anki review (~<reserve_min> min)` block per study day, placed at the **start** of
-  that day's first free interval (reviews first), before B&B packing.
+  that day's first free interval (reviews first), before video packing.
 
-## Stage 4 · Map concepts → B&B  (cover the inventory)
+## Stage 4 · Map concepts → videos  (cover the inventory)
 
 Map from the **Stage-1.5 concept inventory**, not the lecture title. The goal is a video set that
 **covers everything the lecture teaches** — "bigger than the materials is fine, smaller is not."
@@ -98,23 +112,48 @@ Map from the **Stage-1.5 concept inventory**, not the lecture title. The goal is
 For each lecture, in order:
 1. Check `data/lecture-map.md` for a confirmed mapping. Reuse it — **then verify it still covers the
    current inventory** (professors revise decks; a mapping confirmed in June can under-cover in July).
-2. Else search `bb-videos.json` for the leaf video(s) whose subject matches — **working concept by
+2. Else search the resolved library for the leaf video(s) whose subject matches — **working concept by
    concept, not lecture by lecture.** Walk the inventory and ask "which video teaches this?" A lecture
    spanning cell signaling + second messengers + receptor classes maps to **all three** videos.
    **Several videos per lecture is the normal case**, not an exception.
-   - **Match against `video_index` first, not the title.** Schema v2 carries the site's own index —
-     18,667 verbatim fragments across 502 videos (`"ulcers, peptic"`, `"Meyer-Overton rule"`). They're
-     keyword fragments, **for substring matching, not display**: lowercase both sides and test
-     containment each way, and remember the index inverts phrases (search `peptic` *and* `ulcer`).
-     This is what makes concept-level mapping work where a title match fails.
-   - Then read the video's **`description`** to confirm the subject really is the concept (the
-     keyword ≠ subject check), and use **`first_aid_2026`** page refs to cross-check against a lecture's
-     First Aid reference when the slides give one.
-   - **5 videos genuinely have no index** (`Common Musculoskeletal Conditions`, `Brain Injury`,
-     `Hypoxemia`, `Asthma and Bronchiectasis`, `Pneumonia II`) — an empty `video_index` is absent on the
-     site, not a capture failure. Map those by title + `description`.
-   - `first_aid_forward` lists topics a video defers to a later one — a useful signal that the concept
-     you're chasing lives in a *different* video than the title suggests.
+   - **Match against `video_index` first, not the title.** Both libraries carry one; it is the whole
+     reason concept-level mapping works where a title match fails. Entries are **keyword fragments for
+     substring matching, not display**: lowercase both sides, test containment each way, and remember
+     an index inverts phrases (search `peptic` *and* `ulcer`).
+   - **In `bb`:** 18,667 verbatim fragments across 502 videos (`"ulcers, peptic"`,
+     `"Meyer-Overton rule"`). Then read the video's **`description`** to confirm the subject really is
+     the concept (the keyword ≠ subject check), and use **`first_aid_2026`** page refs to cross-check
+     against a lecture's First Aid reference when the slides give one. **5 videos genuinely have no
+     index** (`Common Musculoskeletal Conditions`, `Brain Injury`, `Hypoxemia`,
+     `Asthma and Bronchiectasis`, `Pneumonia II`) — an empty `video_index` is absent on the site, not a
+     capture failure; map those by title + `description`. `first_aid_forward` lists topics a video
+     defers to a later one — a useful signal that the concept you're chasing lives in a *different*
+     video than the title suggests.
+   - **In `bootcamp`:** each entry's `video_index` is 3–4 items — subject, section, lesson title, and
+     (when Bootcamp publishes one) its **`source_keywords`** string. That last entry is a single dense
+     run of un-delimited terms (`"rough smooth endoplasmic reticulum ER golgi COP I II clathrin
+     anterograde retrograde transport exocytosis lysosome endocytosis I-cell disease…"`), so match
+     **term-by-term against the whole string**, not fragment-equality. **381 of 2,724 entries have no
+     keyword string** — for those, the section name plus title in `concept_tags` is all there is; map
+     them by hierarchy. **`description` is `null` everywhere and there are no First Aid page refs**, so
+     the keyword ≠ subject check falls to the **section name**: a hit inside `Cardiology › Heart
+     Failure` is about heart failure. There is no `first_aid_forward` signal.
+   - **Bootcamp covers more than Step 1.** `library_group` on each subject is `Step 1 - Preclinical`,
+     `Step 2 - Clinical (Preview)`, or `Anatomy Bootcamp`. Match within the group the lecture belongs
+     to — an anatomy or histology lecture maps into **Anatomy Bootcamp** (`Gross Anatomy`,
+     `Neuroanatomy`, `Histology`, `OMM`), which has no B&B equivalent, and Step 2 Preview subjects
+     should not be pulled into a preclinical week unless the materials genuinely call for them.
+   - **Bootcamp titles repeat — never key on a bare title.** `Board-style Question Breakdown` appears
+     **166 times**, `Case Progression I` 25 times, and 83 titles are non-unique overall. Identify every
+     Bootcamp video as **`Subject › Section › Title`** in the mapping table, `lecture-map.md`,
+     `watched-videos.md`, and the event description. Two of those triples still collide
+     (`Gross Anatomy › Anterior & Medial Thigh, Knee › Knee Joint`,
+     `Histology › Blood & Blood Formation › Bone Marrow - Overview`) — disambiguate with `route`.
+   - **Bootcamp question/case videos are content, not filler.** `Board-style Question Breakdown`,
+     `Case Progression *`, and `Practice Questions` teach the section they sit in — map them when their
+     section is the lecture's. They stay in the mapping; when Stage 5 runs out of room they are the
+     **first to take the `couldnt_fit` flag**, ahead of any teaching video (flagged and reported like
+     any other shortfall — never quietly dropped from the map).
 3. **Coverage check (the floor):** lay the chosen video set against the inventory and mark any concept
    no video covers. Try a wider/adjacent leaf to close it. If nothing covers it, record it as a
    **`coverage_gap`** for the plan doc — you need to know that part of the lecture has no video
@@ -124,13 +163,17 @@ For each lecture, in order:
    the narrow one when the window genuinely can't hold the runtime — and say so.
 5. Several lectures may share a video → **dedupe**: schedule it once, before the earliest of them.
 6. **Filter against the watched memory** (`data/watched-videos.md`, per `config.md`):
-   - Match by **title**, case-insensitive with whitespace collapsed (titles are globally unique).
+   - Match on the library's **identity key**, case-insensitive with whitespace collapsed: **`title`**
+     for `bb` (globally unique), **`Subject › Section › Title`** for `bootcamp` (titles are not).
+     A bare Bootcamp title in the log is **ambiguous, not a match** — if it resolves to more than one
+     video, flag it for qualification rather than silently skipping all of them.
    - `watched` / `skip` → **don't schedule it.** Keep it in the mapping table marked
      `✓ watched <date>`; **its concepts stay covered** — this is not a `coverage_gap`.
    - `partial` → treat as **not** watched; schedule it normally.
    - `rewatch_after_days` set and the watch date is older than that → back into the schedulable pool.
-   - A row in the watched log matching **no** library video → **flag it** in the plan doc
-     ("watched-log entry `<title>` matches no B&B video — typo or retired?"). Never ignore it silently.
+   - A row in the watched log matching **no** video in the resolved library → **flag it** in the plan
+     doc ("watched-log entry `<key>` matches no video in `<library>` — typo, retired, or logged
+     against the other library?"). Never ignore it silently.
 7. No clean match for the whole lecture → mark `attend_only` (no block).
 8. Record new confirmed mappings to append to `lecture-map.md` in Stage 6, with the concepts each
    video was chosen to cover (so the next run can re-verify coverage, not just re-use a title match).
@@ -165,16 +208,20 @@ Each resulting block → an event spec: `{day, start, end, title, video_list, pr
 ## Stage 6 · Emit — doc, then events, then log
 
 **A. Plan doc** → `<plans_dir>/<week_start>-week.md`:
-- Header: week range; # lectures; total B&B minutes; Anki reserve/day used (+ how derived);
+- Header: week range; **which video library was used** (and how it was resolved); # lectures; total
+  video minutes; Anki reserve/day used (+ how derived);
   any "Anki estimate unavailable" flag; **how many lectures had materials read vs. objective-derived**.
 - **Coverage summary up top** — the floor report: `concepts covered / total` for the week, plus any
   `coverage_gap` (no video teaches it) and any `couldnt_fit` (video exists, no room before the
   lecture). If coverage is complete, say so plainly ("all 47 concepts covered"). Note separately how
   many videos were **skipped as already watched** (with the time that freed) — covered, not missing.
-- Any **unmatched watched-log rows** (a title matching no B&B video — typo or retired video).
+- Any **unmatched watched-log rows** (a key matching no video in the resolved library — typo, retired
+  video, or a row logged against the other library) and any **ambiguous bare Bootcamp titles**.
 - Per-day schedule table: `start–end | activity | min | preps`.
-- Lecture → B&B mapping table: `lecture | videos (min) | concepts covered/total | gaps | confidence`
-  (incl. `attend only — no B&B` rows and `🚧 materials pending` rows).
+- Lecture → video mapping table: `lecture | videos (min) | concepts covered/total | gaps | confidence`
+  (incl. `attend only — no video match` rows and `🚧 materials pending` rows). Name each video by its
+  library identity key — bare `title` for `bb`, `Subject › Section › Title` for `bootcamp` — and, under
+  `video_library = both`, tag every row with which library it came from.
 - Flags: unmatched lectures, `couldnt_fit` videos (with the lecture **and concepts** they were for),
   low-confidence mappings, days over/under target.
 
@@ -196,13 +243,17 @@ Each resulting block → an event spec: `{day, start, end, title, video_list, pr
   is intentional (it's what protects the time), but it means a later meeting booked over a study block
   will surface as a real conflict.
 
-**C. Log** → append to `data/run-log.md`: date run, week, # lectures, # blocks, total minutes, Anki
-reserve used, and the **created event ids** (for undo/replace). Append newly-confirmed mappings to
-`data/lecture-map.md`.
+**C. Log** → append to `data/run-log.md`: date run, week, **video library used**, # lectures, # blocks,
+total minutes, Anki reserve used, and the **created event ids** (for undo/replace). Append
+newly-confirmed mappings to `data/lecture-map.md` as
+`| <IM #> | <lecture> | <library> | <video(s) [min]> | <notes> |` — Bootcamp videos written
+`Subject › Section › Title`, and never two libraries in one row.
 
 **D. Update the watched memory** → `data/watched-videos.md`:
 - List the **previous** run's scheduled videos (from the run-log) and ask which ones you actually
-  watched. Append a row per confirmation: `| <title> | <subject> | watched | <date> | <IM##> | |`.
+  watched. Append a row per confirmation:
+  `| <title> | <library> | <subject> | <section> | watched | <date> | <IM##> | |`.
+  **`<subject>` and `<section>` are required on a `bootcamp` row** — they're part of the key there.
 - **Never auto-mark this run's videos as watched** — scheduling is not watching, and a block he didn't
   get to must not silently count as done. Only an explicit confirmation (or his own hand-edit) writes
   a `watched` row.
