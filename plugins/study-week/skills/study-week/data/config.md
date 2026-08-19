@@ -30,10 +30,32 @@ Mornings are left alone; the skill only proposes blocks inside the study window 
 | `min_block_min` | `20` | Don't stage a block shorter than this. |
 | `max_block_min` | `120` | Split longer runs into separate events with a break. |
 
+## Video library (which resource the plan maps to)
+
+Two libraries ship with the skill. **Pick the one you actually study from** — the plan is only as
+useful as the videos it points you at.
+
+| Key | Value | Notes |
+|---|---|---|
+| `video_library` | `auto` | `auto` \| `bb` \| `bootcamp` \| `both`. `auto` = follow anki-week's `backbone_resource`: `#Bootcamp` → `bootcamp`, anything else → `bb`. Set it explicitly if you don't run anki-week. |
+
+| Value | File | What it is |
+|---|---|---|
+| `bb` | `data/bb-videos.json` | **Boards & Beyond** — Step 1 Preclinical. 22 subjects / 502 videos / 9,003 min. Per-video `video_index` (the site's own keyword index), `description`, First Aid page refs, `quiz_count`. |
+| `bootcamp` | `data/bootcamp-videos.json` | **Med School Bootcamp** — Step 1 Preclinical + Step 2 Clinical (Preview) + Anatomy Bootcamp (Gross Anatomy, Neuroanatomy, Histology, OMM). 26 subjects / 2,724 catalog entries (2,705 unique videos) / 26,175 min. Per-video `source_keywords` (Bootcamp's own keyword string), exact `duration`, `subject_tags` / `concept_tags`, `route`. `description` is `null` — Bootcamp doesn't publish per-video prose. |
+| `both` | both files | Map against both and take the better cover per concept. Label every video with its library in the plan doc and the lecture map — **titles are not unique across the two libraries.** |
+
+**Video identity (matters for the watched log and the lecture map):**
+
+| Library | Key | Why |
+|---|---|---|
+| `bb` | `title` | Globally unique across all 502 videos. |
+| `bootcamp` | `Subject › Section › Title` | Titles repeat by design — `Board-style Question Breakdown` appears **166 times**, `Case Progression I` 25 times. A bare title is ambiguous; always qualify it. Two `Subject › Section › Title` pairs still collide (`Gross Anatomy › Anterior & Medial Thigh, Knee › Knee Joint`, `Histology › Blood & Blood Formation › Bone Marrow - Overview`) — use the video's `route` there. |
+
 ## Resource timing & mapping
 
 - **Pre-lecture prep:** a lecture's mapped video(s) must be scheduled before that lecture starts; pull forward onto earlier light days rather than leaving window capacity idle.
-- **Primary lens = your `backbone_resource`** from anki-week's config (`bb-videos.json` holds a Boards & Beyond index; swap or extend for another resource). Map each lecture to its video(s) by subject, not title keywords. Dedupe a video shared by two lectures.
+- **Primary lens = your `video_library`** (resolved from `backbone_resource` when it's `auto`). Map each lecture to its video(s) by subject, not title keywords. Dedupe a video shared by two lectures — in `bootcamp` that includes the 19 cross-listed entries, which are one underlying video published under two sections (`cross_listed_under` records the alternates; schedule it once).
 - Non-content sessions (Formative, Peer Instruction, communication, library training, exam/review) get **no block** — list them under "attend only".
 
 ## Anki review reserve

@@ -4,9 +4,12 @@ description: >-
   Build your weekly medical-school study plan. Reads the coming week's lectures from your class
   calendar (config `class_calendar_id`) to know which lecture materials to pull, then READS THOSE
   MATERIALS (slides/PDF) to build each lecture's concept inventory and maps that inventory — not the
-  lecture title — to its Boards & Beyond video(s) with runtimes, choosing a video set that covers
-  everything the lecture teaches. Reserves a daily Anki-review block from your recent review volume and
-  packs pre-lecture study blocks into your 2–8 PM weekday window (wider on weekends). Emits BOTH a
+  lecture title — to its study video(s) with runtimes, choosing a video set that covers
+  everything the lecture teaches. Works off EITHER Boards & Beyond OR Med School Bootcamp — both
+  video libraries ship with the skill and `video_library` in config picks one (default: follow
+  anki-week's `backbone_resource`, so Bootcamp subscribers get a Bootcamp plan). Reserves a daily
+  Anki-review block from your recent review volume and packs pre-lecture study blocks into your
+  2–8 PM weekday window (wider on weekends). Emits BOTH a
   written weekly plan doc AND committed calendar events on your personal calendar — real blocks you can
   move or delete yourself, not proposals awaiting approval.
   Reads data/config.md for calendars, the course-materials folder, the study window, caps, and
@@ -19,11 +22,17 @@ description: >-
 
 ## Overview
 
-Turn the coming week's lectures into a concrete study plan: **what B&B to watch, when, plus reserved
-Anki time**, placed into the real open time in your 2–8 PM study window — delivered as a plan doc
+Turn the coming week's lectures into a concrete study plan: **which videos to watch, when, plus
+reserved Anki time**, placed into the real open time in your 2–8 PM study window — delivered as a plan doc
 and **committed calendar events**. Sibling to `anki-week` (which builds the cards) and
-`daily-schedule-assistant`. **Pre-lecture prep:** a lecture's B&B videos are scheduled before that
+`daily-schedule-assistant`. **Pre-lecture prep:** a lecture's videos are scheduled before that
 lecture.
+
+**Two video libraries, one procedure.** `data/bb-videos.json` (Boards & Beyond, 502 videos) and
+`data/bootcamp-videos.json` (Med School Bootcamp, 2,724 entries incl. Anatomy Bootcamp) share the same
+schema, so everything below works the same either way. `video_library` in `config.md` picks: `auto`
+(default — follow anki-week's `backbone_resource`, so `#Bootcamp` users get Bootcamp), `bb`,
+`bootcamp`, or `both`.
 
 **Committed, not proposed (2026-07-31).** Study blocks go on the calendar as real BUSY events with no
 `🟡 Proposed — ` prefix and no accept step. If a block needs to move, **you move it** — and a
@@ -32,8 +41,8 @@ re-run leaves moved blocks exactly where you put them. This intentionally diverg
 
 **Materials-driven (same rule as `anki-week`).** The calendar is an **index** — it tells you which
 lectures exist so you know **which materials to go read**. Then you **read those materials** and map
-the lecture's **concept inventory** to B&B videos. You are picking videos to cover *what the professor
-will actually teach*, not what the lecture title sounds like.
+the lecture's **concept inventory** to your library's videos. You are picking videos to cover *what
+the professor will actually teach*, not what the lecture title sounds like.
 
 **📄 "Materials" = the professor's slide FILES only — never an Anki deck.** Same definition as
 `anki-week`: `.pptx` / `.ppt` / `.pdf` in `<course_folder>/<Course>/Week <n>/`, or fetched from
@@ -43,7 +52,7 @@ found." Checking for materials is a **file check**; no PPTX/PDF → the lecture 
 fetch ladder → Blackboard. This skill touches Anki only to size your **review load**, never for scope.
 
 **⬆️ The floor rule: never plan LESS video than the materials require.** If a lecture's concepts span
-three B&B videos, schedule all three — a single title-matched video that covers half the lecture is a
+three videos, schedule all three — a single title-matched video that covers half the lecture is a
 planning failure. Going **bigger** (an extra adjacent video, a deeper section) is fine; going smaller
 is not. When the week's video load genuinely won't fit the window, **flag it** — never silently drop
 coverage to make the calendar look tidy.
@@ -73,14 +82,23 @@ coverage to make the calendar look tidy.
   slides itself** (Stage 1.4) — which is what turns a title-guessed video map into a materials-derived
   one. Outside Cowork: one-line nudge when the run starts, again at any blocked fetch (ladder rung 2),
   and one line at the end. One line each time, never a paragraph.
-- `data/bb-videos.json` present — the B&B library, **schema_version 2** (22 subjects / **502 videos** /
-  9,003 min), extracted live from the logged-in Boards & Beyond web app (2026-08-18). Each video now
-  carries **`video_index`** (18,667 verbatim keyword fragments — the site's own index, for substring
-  matching), a **`description`**, **`first_aid_2026` / `first_aid_2025`** page refs,
-  `first_aid_forward`, `last_modified` and `quiz_count`. Top level also holds **`title_aliases`**
-  (every renamed v1 title → its current title). **`data/build-bb-videos.py` builds the legacy v1
-  schema from the checklist PDF (titles + runtimes only) — don't run it over this file**; re-extract
-  from the web app instead.
+- **A video library present** — which one comes from `video_library` in `config.md` (`auto` follows
+  anki-week's `backbone_resource`). Both ship with the skill, both are **schema_version 2**
+  (`subjects → sections → videos`, per-video `video_index`, top-level `title_aliases`):
+  - `data/bb-videos.json` — **Boards & Beyond** (22 subjects / **502 videos** / 9,003 min), extracted
+    live from the logged-in B&B web app (2026-08-18). Carries **`video_index`** (18,667 verbatim
+    keyword fragments — the site's own index, for substring matching), a **`description`**,
+    **`first_aid_2026` / `first_aid_2025`** page refs, `first_aid_forward`, `last_modified` and
+    `quiz_count`. **`data/build-bb-videos.py` builds the legacy v1 schema from the checklist PDF
+    (titles + runtimes only) — don't run it over this file**; re-extract from the web app instead.
+  - `data/bootcamp-videos.json` — **Med School Bootcamp** (26 subjects / **2,724 catalog entries**,
+    2,705 unique videos / 26,175 min), from Bootcamp's own published course configuration
+    (2026-08-19). Spans **Step 1 Preclinical, Step 2 Clinical (Preview), and Anatomy Bootcamp**
+    (Gross Anatomy, Neuroanatomy, Histology, OMM — no B&B equivalent). Matching leans on
+    **`source_keywords`** (Bootcamp's own keyword string; 381 entries have none) plus the section
+    hierarchy in `concept_tags`; **`description` is `null` throughout** and there are no First Aid
+    refs. **Titles repeat** (`Board-style Question Breakdown` ×166) — identify a Bootcamp video as
+    **`Subject › Section › Title`**, never a bare title.
 - `data/watched-videos.md` — what you have already watched. Read every run; empty is fine.
 
 ## The procedure
@@ -95,7 +113,7 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 | **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
 | 2 · Busy | Read Personal calendar; per day, subtract window events → free intervals in the 2–8 PM window. | `list_events` |
 | 3 · Anki | Reserve a daily review block from recent review volume (`find_notes deck:… rated:N`), or the fixed fallback. Reviews go first. | `find_notes` |
-| 4 · Map | Map each lecture's **concept inventory** → the B&B leaf video(s) that **cover all of it** (reuse `data/lecture-map.md`, then match concepts against each video's **`video_index`** / `description`); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read `bb-videos.json`, `watched-videos.md` |
+| 4 · Map | Map each lecture's **concept inventory** → the leaf video(s) in your library that **cover all of it** (reuse `data/lecture-map.md`, then match concepts against each video's **`video_index`** — plus `description` in B&B, `source_keywords` + section in Bootcamp); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read the video library, `watched-videos.md` |
 | 5 · Pack | Greedy earliest-fit: place each video before its lecture, front-loading light days, honoring caps; flag anything that won't fit. | — |
 | 6 · Emit | Write the plan doc → create **committed** events (no prefix, Banana, **BUSY**, 120+15 reminders, `[study-week:<week>]` in the description) → log run + event ids → append new mappings → confirm which of *last* run's videos were watched and record them. | `create_event`, Write |
 
@@ -109,7 +127,8 @@ Run the detailed steps in **reference/playbook.md**. Summary:
   approval step. Never touch events with other attendees. **You move or delete them yourself, and
   a re-run respects that** (a still-existing block is left where you put it, never recreated or
   re-timed).
-- **B&B primary lens:** map by subject via `bb-videos.json` — **match concepts against `video_index`, not titles** (that's what the v2 index is for); dedupe shared videos.
+- **Library primary lens:** map by subject via the resolved library — **match concepts against `video_index`, not titles** (that's what the v2 index is for); dedupe shared videos, including Bootcamp's 19 cross-listings (one video published under two sections).
+- **Identify videos the way the library allows:** B&B titles are globally unique, so a title is enough. **Bootcamp titles are not** — always `Subject › Section › Title` in the plan doc, `lecture-map.md`, `watched-videos.md`, and the event description.
 - **Cover the materials:** the mapped video set must cover the lecture's whole concept inventory.
   Under-covering is a defect; over-covering is fine. Surface uncovered concepts in the plan doc.
 
@@ -143,10 +162,16 @@ lecture is called, the materials say what it teaches, and only the second one pi
 - **Treating an Anki deck as the lecture materials.** A deck named **`Meharry Slides`** is someone's
   pre-made cards — mapping videos off it means covering *their* card selection instead of the
   professor's slides. Materials are **files**; no file → fetch from Blackboard.
-- **Stopping at one video per lecture.** A lecture routinely spans several B&B leaves; one title-matched
+- **Stopping at one video per lecture.** A lecture routinely spans several leaves; one title-matched
   video that covers a third of the slides leaves you unprepared. Map the whole inventory.
-- Mapping by lecture title keyword instead of subject (e.g. a "Cell Signaling" lecture → the right B&B
+- Mapping by lecture title keyword instead of subject (e.g. a "Cell Signaling" lecture → the right
   leaf, not any video with "cell" in it). Verify subject; record the confirmed mapping.
+- **Logging a Bootcamp video by bare title.** `Board-style Question Breakdown` matches 166 videos —
+  a bare title in `watched-videos.md` or `lecture-map.md` is ambiguous, and silently skipping every
+  match would blow a hole in the week. Qualify it: `Subject › Section › Title`.
+- **Mapping a Bootcamp lecture into the wrong `library_group`.** Anatomy/histology lectures live under
+  **Anatomy Bootcamp**; don't pull Step 2 Clinical (Preview) subjects into a preclinical week unless
+  the materials call for them.
 - **Silently dropping coverage to fit the window.** If the week's videos won't fit, flag the overflow —
   don't quietly plan less than the lectures require.
 - **Counting a watched video as a coverage gap.** Skipping it frees time; the concept is still covered
@@ -164,8 +189,9 @@ lecture is called, the materials say what it teaches, and only the second one pi
 ## Artifacts
 
 - `data/config.md` — calendars, window, caps, Anki knobs. **Edit first.**
-- `data/bb-videos.json` — B&B video library, schema v2 (subject → sections → videos, each with `video_index`, `description`, First Aid page refs) + `title_aliases`. Web-app extraction; `build-bb-videos.py` is the legacy v1 PDF builder.
-- `data/lecture-map.md` — confirmed lecture→B&B mappings; grows each run.
+- `data/bb-videos.json` — **Boards & Beyond** library, schema v2 (subject → sections → videos, each with `video_index`, `description`, First Aid page refs) + `title_aliases`. Web-app extraction; `build-bb-videos.py` is the legacy v1 PDF builder.
+- `data/bootcamp-videos.json` — **Med School Bootcamp** library, same schema v2 shape (each video with `video_index`, `source_keywords`, `concept_tags`, exact `duration`, `route`) + `title_aliases`. Covers Step 1, Step 2 (Preview), and Anatomy Bootcamp. Selected via `video_library`.
+- `data/lecture-map.md` — confirmed lecture→video mappings (with the library each came from); grows each run.
 - `data/watched-videos.md` — **the watched memory**: videos already consumed, so they aren't re-staged.
 - `data/run-log.md` — per-week audit trail + created event ids (undo/replace).
 - `reference/playbook.md` — the full procedure.

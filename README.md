@@ -9,7 +9,10 @@ Two Claude Code skills for medical students:
   disease pathology — those cards are deferred and re-offered when you reach that block.
 - **study-week** — plans the week's study *time* around those decks: maps each lecture to its
   study video(s), reserves daily Anki-review time, and puts pre-lecture blocks on your calendar as
-  real events you can move or delete yourself.
+  real events you can move or delete yourself. Ships with **two video libraries — Boards & Beyond and
+  Med School Bootcamp** (including Anatomy Bootcamp: gross anatomy, neuroanatomy, histology, OMM) — and
+  picks the one matching the backbone resource you set during setup, so Bootcamp users get the same
+  plan B&B users do. Override any time with `video_library` in study-week's `config.md`.
 
 Using ChatGPT instead of Claude? There's a port — see [`chatgpt/`](chatgpt/).
 
@@ -86,8 +89,10 @@ would have saved you the download; that's deliberate.
 
 ## Notes
 
-Not affiliated with AnKing, AnkiHub, or Boards & Beyond. These skills **redistribute no card
-content** — they only switch on cards in the AnKing deck you already own, and read a syllabus you
-already have. Bring your own deck and resources.
+Not affiliated with AnKing, AnkiHub, Boards & Beyond, or Med School Bootcamp. These skills
+**redistribute no card or video content** — the bundled video libraries are catalogs only (titles,
+runtimes, and each site's own keyword index, used to decide what to watch and when); they switch on
+cards in the AnKing deck you already own and read a syllabus you already have. Bring your own deck and
+subscriptions.
 
 MIT licensed — see [`LICENSE`](LICENSE).
