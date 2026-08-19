@@ -24,10 +24,31 @@ In Claude Code:
 ```
 
 Then run first-time setup — just tell Claude: **"set up anki-week."** It walks you through
-Anki + the MCP add-on, detects your deck, asks which study resource is your backbone, and fills
-in your config. A readable version of that walkthrough is in [`docs/SETUP.md`](docs/SETUP.md).
+Anki + the MCP add-on, **writes the `anki` connector into your Claude Desktop config for you** (so it
+shows up in Claude Chat and Claude Cowork without you editing JSON), detects your deck, asks which
+study resource is your backbone, and fills in your config. A readable version of that walkthrough is
+in [`docs/SETUP.md`](docs/SETUP.md).
 
-To update later: `/plugin marketplace update phillo-study`.
+The connector it installs is just this, merged into your existing config (other MCP servers are kept,
+and the file is backed up first):
+
+```json
+{
+  "mcpServers": {
+    "anki": {
+      "command": "npx",
+      "args": ["mcp-remote", "http://127.0.0.1:3141"]
+    }
+  }
+}
+```
+
+If you ever need to (re)install it by hand, run the same script the skill uses:
+`node plugins/anki-week/skills/setup/scripts/install-anki-mcp.mjs` (`--dry-run` to preview), then
+fully quit and reopen Claude.
+
+To update later: `/plugin marketplace update phillo-study`. If the Anki connector ever goes missing,
+`/anki-connect` reinstalls and re-verifies it.
 
 ### Codex
 
@@ -39,6 +60,19 @@ The skills themselves are the same files; nothing is duplicated per surface.
 > works where the agent runs on the same machine as Anki — Claude Code, Claude Cowork, or Codex
 > locally. ChatGPT in the browser can't reach your Mac's localhost. `study-week` is calendar-driven
 > and less affected.
+
+## Use it in Claude Cowork
+
+Set up once anywhere; **do your weekly builds in [Claude Cowork](https://claude.ai/cowork)**. Cowork
+has a browser, so it can log into Blackboard with your existing session and **fetch each week's
+lecture slides itself** — which is the whole ballgame here, because both skills scope from the actual
+slides rather than the lecture title. In plain Claude Code the skills can still build decks and plan
+your week, but you have to download every lecture's materials into `course_folder` by hand first, and
+a missing file quietly shrinks what gets carded.
+
+The setup step writes the `anki` connector into your Claude Desktop config, so Cowork already has it
+— switching costs you nothing. Both skills will nudge you toward Cowork on any run where a browser
+would have saved you the download; that's deliberate.
 
 ## What you need
 

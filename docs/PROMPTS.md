@@ -4,6 +4,12 @@ Anki must be **open** every time you use these skills — the connection only ex
 desktop app is running. New cards/day is set manually in Anki (**your deck ▸ Options ▸ New
 cards/day**); the MCP can't set it for you — `anki-week` will tell you the number to enter.
 
+**Run these in [Claude Cowork](https://claude.ai/cowork) when you can.** Cowork has a browser, so it
+logs into Blackboard and pulls each week's lecture slides down for you — and both skills scope from
+those slides, not the lecture title. In plain Claude Code they still work, but you have to download
+every lecture's materials into `course_folder` yourself first. The `anki` connector installed during
+setup is already live in Cowork; there's nothing extra to set up.
+
 Paste any of these into Claude (tweak the bracketed parts).
 
 ## Build & plan
@@ -60,6 +66,13 @@ Paste any of these into Claude (tweak the bracketed parts).
 - *"The slides for [lecture] just dropped — reconcile that deck against them and flip it to Final."*
 - *"This deck has board tangents the lecture didn't cover — trim [topic] back out."*
 - *"Re-run [lecture]; I think it got mapped to the wrong subject."*
+
+## Connector / surface
+
+- *"The `anki` connector is missing — install it into my Claude Desktop config and tell me to restart."*
+- *"Show me what's in my `claude_desktop_config.json` right now, then add the `anki` server without
+  touching my other MCP servers."*
+- *"I'm in Claude Code — what am I giving up by not using Cowork this week?"*
 
 ## Housekeeping
 

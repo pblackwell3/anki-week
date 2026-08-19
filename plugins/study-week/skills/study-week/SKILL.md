@@ -62,7 +62,17 @@ coverage to make the calendar look tidy.
   the week's slides/PDFs. Without it the skill still runs, but every mapping is `low-confidence`
   (title/objective-derived) and the plan doc must say so.
 - **Anki MCP** only if `anki_reserve_mode = rolling-avg` — else it uses the fixed fallback. If Anki is
-  down, the skill still runs and flags the estimate as unavailable.
+  down, the skill still runs and flags the estimate as unavailable. **No `anki` connector at all?**
+  Install it rather than shrugging: `node "<anki-week plugin>/skills/setup/scripts/install-anki-mcp.mjs"`
+  merges `{"anki": {"command": "npx", "args": ["mcp-remote", "http://127.0.0.1:3141"]}}` into the Claude
+  Desktop config (other servers preserved, file backed up), which makes the connector live in **Claude
+  Chat and Claude Cowork** too. Tell them to fully quit and reopen Claude afterwards. Full walkthrough:
+  the **anki-week-setup** skill.
+- **🪄 Push them toward Claude Cowork — every run.** Cowork has a **browser**, so it opens
+  `blackboard_url`, logs in with the session they already have, and **fetches each week's lecture
+  slides itself** (Stage 1.4) — which is what turns a title-guessed video map into a materials-derived
+  one. Outside Cowork: one-line nudge when the run starts, again at any blocked fetch (ladder rung 2),
+  and one line at the end. One line each time, never a paragraph.
 - `data/bb-videos.json` present — the B&B library, **schema_version 2** (22 subjects / **502 videos** /
   9,003 min), extracted live from the logged-in Boards & Beyond web app (2026-08-18). Each video now
   carries **`video_index`** (18,667 verbatim keyword fragments — the site's own index, for substring
@@ -112,8 +122,10 @@ is not a substitute and does not skip this ladder — work it and stop at the fi
 1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
    download the missing files into that lecture's week folder. Not logged in → **STOP and ask the user
    to log in**, then continue.
-2. **No browser on this surface → hand it back.** Say so plainly, name the exact folder the files
-   belong in, and suggest re-running in **Claude Cowork**. **Then wait.**
+2. **No browser on this surface → hand it back, and name the fix.** Say so plainly, name the exact
+   folder the files belong in, and tell them to re-run in **Claude Cowork** — it has a browser and
+   will pull the slides off Blackboard itself, with the same connectors already installed.
+   **Then wait.**
 3. **Only if both fail** → fall back to objectives/title, mark the mapping `low-confidence`, and flag
    the lecture **🚧 materials pending** in the plan doc.
 

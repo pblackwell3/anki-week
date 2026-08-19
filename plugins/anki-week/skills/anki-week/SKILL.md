@@ -61,9 +61,22 @@ that question and never closes the gap.**
 
 ## Prerequisites (check first, every run)
 
-- **Anki desktop must be OPEN** on this Mac with the **Anki MCP Server** add-on (AnkiWeb code `124672614`) enabled — it serves the `anki` MCP at `http://127.0.0.1:3141`. (NOT AnkiConnect; that's a different add-on and isn't used here.) If `list_decks` / `find_notes` errors, STOP and tell the user to open Anki — change nothing.
-- **Set up once in Claude Code** (install Node, edit this config, connect Anki); after that the skill runs in **both Claude Code and Cowork** — the Anki MCP add-on is reachable from both.
-- **A browser is what lets this skill feed itself.** When a lecture's materials are missing, Stage 0 opens `blackboard_url` and downloads them (reusing your logged-in session). **Claude Cowork has a browser; plain Claude Code usually does not** — there the skill will ask you to switch or to add the files yourself. Prefer Cowork for weekly builds.
+- **Anki desktop must be OPEN** on this Mac with the **Anki MCP Server** add-on (AnkiWeb code `124672614`) enabled — it serves the `anki` MCP at `http://127.0.0.1:3141`. (NOT AnkiConnect; that's a different add-on and isn't used here.) If `list_decks` / `find_notes` errors *while Anki is open*, STOP and tell the user — change nothing.
+- **🔌 No `anki` connector at all? Install it yourself, now — don't ask the user to paste JSON.** Before Stage 0 on any run, confirm the `anki` MCP is actually reachable (one read-only call, e.g. `list_decks`). If the connector isn't there, run:
+
+  ```bash
+  node "<anki-week plugin>/skills/setup/scripts/install-anki-mcp.mjs"
+  ```
+
+  (from this skill's folder: `node ../setup/scripts/install-anki-mcp.mjs`). It merges the entry below into the **Claude Desktop config** — preserving every other MCP server, backing the file up first, refusing to overwrite unparseable JSON — so the connector is live in **Claude Chat and Claude Cowork**, not just wherever you're running now:
+
+  ```json
+  { "mcpServers": { "anki": { "command": "npx", "args": ["mcp-remote", "http://127.0.0.1:3141"] } } }
+  ```
+
+  Then tell the user to **fully quit and reopen Claude** and re-run; on this surface also offer `claude mcp add anki -- npx mcp-remote http://127.0.0.1:3141`. Requires Node (`npx --version`; else <https://nodejs.org> LTS). No shell here → fall back to walking them through **Settings ▸ Developer ▸ Edit Config**. Full walkthrough: the **anki-week-setup** skill.
+- **🪄 Say "switch to Claude Cowork" — every run.** Cowork is where this workflow is whole: it has a **browser**, so it opens `blackboard_url`, logs in with the session you already have, and **pulls each week's lecture slides down itself** — then builds decks off the real slides instead of a lecture title. Plain Claude Code can't fetch materials; you'd be downloading every lecture by hand. So: **open every run outside Cowork with a one-line nudge**, repeat it the moment a materials fetch is blocked (*Materials missing → FETCH*, rung 2), and close the run with it. Keep it to one line each time — a standing offer, not a lecture. The connector installed above is already live in Cowork, so switching costs them nothing.
+- **Set up once** (install Node, write the config above, connect Anki); after that the skill runs in **both Claude Code and Cowork** — the Anki MCP add-on is reachable from both.
 
 ## When to use
 
@@ -97,9 +110,11 @@ mapping — work this ladder in order and stop at the first rung that succeeds:
 1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and
    download the missing files into that lecture's week folder. If the session isn't logged in, **STOP
    and ask the user to log in**, then continue. Never guess at a URL, and never invent a filename.
-2. **No browser on this surface → hand it back.** Tell the user plainly: *"I can't open Blackboard from
-   here. Switch to Claude Cowork and re-run, or drop the files into `<path>` yourself."* Name the exact
-   folder. **Then wait** — don't build around the gap.
+2. **No browser on this surface → hand it back, and name the fix.** Tell the user plainly: *"I can't
+   open Blackboard from here. **Switch to Claude Cowork** and re-run — it has a browser, it'll log in
+   with your existing session and pull these slides down itself — or drop the files into `<path>`
+   yourself."* Name the exact folder. **Then wait** — don't build around the gap. This is the moment
+   the Cowork nudge is worth most; don't soften it into "you could also…".
 3. **Only if both fail** → fall back to the syllabus objectives, and mark every deck built that way
    **🚧 materials pending** so the gap is visible in the run log and can be rebuilt later.
 
@@ -116,6 +131,12 @@ reads the lecture calendar + your Anki review load and proposes the study/video/
 build. If Anki-deck building was skipped or partial, still fine — study-week plans time around whatever exists;
 it just can't guarantee a matching card for every block. Skip the handoff only if the user just wants cards and
 no schedule.
+
+**Close the run with the Cowork line (when you're not already in Cowork).** One sentence, after the
+report — and make it specific to what this run actually cost them: *"Heads up: you downloaded 4
+lectures' slides by hand for this build. In **Claude Cowork** I'd have pulled them off Blackboard
+myself — same `anki` connector, same decks, nothing to reinstall."* If nothing was missing this week,
+keep it to a single line anyway. Once per run, at the end — never mid-report.
 
 ## Quick reference
 
