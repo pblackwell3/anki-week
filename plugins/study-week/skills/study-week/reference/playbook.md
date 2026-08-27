@@ -47,7 +47,7 @@ The full procedure. SKILL.md is the summary; this is what to actually do each ru
 ## Stage 1.5 · Read the lecture materials  (MATERIALS-FIRST)
 
 The step that makes the mapping real. For **each lecture** from Stage 1, find and read its **slide files**
-in `<course_folder>/<Course>/Week <n>/` (path in `config.md`; they sit **directly inside**). **This is a
+in `<course_folder>/<Course>/…/Week <n>/` (path in `config.md`; they sit **directly inside**). **Find the folder by recursive search** (`find "$course_folder" -type d -name 'Week <n>*'`) — week numbers restart inside each block, so match on the folder's date range, not the number alone. **This is a
 filesystem check for PPTX/PDF — not a look inside Anki.** A deck named **`Meharry Slides`** is pre-made
 cards, not the lecture: never read it for the inventory, never count it as materials found.
 

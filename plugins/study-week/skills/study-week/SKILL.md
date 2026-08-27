@@ -45,7 +45,7 @@ the lecture's **concept inventory** to your library's videos. You are picking vi
 the professor will actually teach*, not what the lecture title sounds like.
 
 **📄 "Materials" = the professor's slide FILES only — never an Anki deck.** Same definition as
-`anki-week`: `.pptx` / `.ppt` / `.pdf` in `<course_folder>/<Course>/Week <n>/`, or fetched from
+`anki-week`: `.pptx` / `.ppt` / `.pdf` in `<course_folder>/<Course>/…/Week <n>/`, or fetched from
 `blackboard_url`. **An Anki deck named `Meharry Slides`** (or any slides-named deck) is pre-made cards,
 **not** the lecture — never read it for the concept inventory, and never let it count as "materials
 found." Checking for materials is a **file check**; no PPTX/PDF → the lecture has no materials → the
@@ -109,8 +109,8 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 |---|---|---|
 | 0 · Week | Resolve the target week (default: coming Mon–Sun) from `config.md`. | — |
 | 1 · Lectures | Read the week's `IM (NN)` sessions from the Class calendar → ordered lecture list. **This is the index of what to read next, not the scope.** | `list_events` |
-| **1.4 · Fetch** | Any lecture with no **PPTX/PDF on disk** in `<course_folder>/<Course>/Week <n>/` → **fetch before mapping** (an Anki `Meharry Slides` deck does not count as having materials). See *Materials missing → FETCH* below. | browser |
-| **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
+| **1.4 · Fetch** | Any lecture with no **PPTX/PDF on disk** in `<course_folder>/<Course>/…/Week <n>/` → **fetch before mapping** (an Anki `Meharry Slides` deck does not count as having materials). See *Materials missing → FETCH* below. | browser |
+| **1.5 · Materials** | **READ each lecture's materials** from `<course_folder>/<Course>/…/Week <n>/` (PPTX→`pptx`, PDF→`pdf`) → a **concept inventory** per lecture. Still no materials after Stage 1.4 → fall back to syllabus objectives/title and mark the mapping `low-confidence`. | Read, `pptx`/`pdf` |
 | 2 · Busy | Read Personal calendar; per day, subtract window events → free intervals in the 2–8 PM window. | `list_events` |
 | 3 · Anki | Reserve a daily review block from recent review volume (`find_notes deck:… rated:N`), or the fixed fallback. Reviews go first. | `find_notes` |
 | 4 · Map | Map each lecture's **concept inventory** → the leaf video(s) in your library that **cover all of it** (reuse `data/lecture-map.md`, then match concepts against each video's **`video_index`** — plus `description` in B&B, `source_keywords` + section in Bootcamp); several videos per lecture is normal and correct. Then drop anything already in `watched-videos.md` (still counts as covered). Flag no-match lectures as attend-only, and flag concepts no video covers. | Read the video library, `watched-videos.md` |
@@ -135,7 +135,7 @@ Run the detailed steps in **reference/playbook.md**. Summary:
 ### Materials missing → FETCH, never silently degrade
 
 Same rule as `anki-week` — a missing file must not quietly become a title-derived guess. For any
-lecture with **no PPTX/PDF** in `<course_folder>/<Course>/Week <n>/` — a `Meharry Slides` deck in Anki
+lecture with **no PPTX/PDF** in `<course_folder>/<Course>/…/Week <n>/` — a `Meharry Slides` deck in Anki
 is not a substitute and does not skip this ladder — work it and stop at the first rung that succeeds:
 
 1. **Browser available → fetch it.** Open `blackboard_url`, find that course's materials area, and

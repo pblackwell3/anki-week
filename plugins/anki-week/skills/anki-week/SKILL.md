@@ -43,7 +43,7 @@ So Stage 2 gates every survivor by its **home system** (`^Systems::<System>` tag
 
 Everywhere this skill says **materials** / **slides** / **the lecture**, it means **the professor's
 posted slide files** — `.pptx` / `.ppt` / `.pdf` (and the occasional `.docx` handout) — living at
-`<course_folder>/<Course>/Week <n>/`, or downloaded from `blackboard_url` when they're not there yet.
+`<course_folder>/<Course>/…/Week <n>/`, or downloaded from `blackboard_url` when they're not there yet.
 **Files on disk. Read with the `pptx` / `pdf` skills.**
 
 **An Anki deck is NEVER lecture materials — not even one named after the slides.** A deck or subdeck
@@ -103,7 +103,7 @@ Run the detailed steps in **reference/playbook.md** — it has the exact MCP cal
 ### Materials missing → FETCH, never silently degrade
 
 The calendar names the week's lectures. For **each** one, check
-`<course_folder>/<Course>/Week <n>/` for its materials — **a PPTX/PDF file on disk; an Anki deck named
+`<course_folder>/<Course>/…/Week <n>/` for its materials — **a PPTX/PDF file on disk; an Anki deck named
 `Meharry Slides` is not a hit.** If a lecture has no slide file, do **not** proceed to
 mapping — work this ladder in order and stop at the first rung that succeeds:
 
