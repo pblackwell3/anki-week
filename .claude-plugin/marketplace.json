@@ -7,7 +7,7 @@
     {
       "name": "anki-week",
       "source": "./plugins/anki-week",
-      "description": "Build a week's AnKing Step Deck from your lecture materials — unsuspend + tag cards, one filtered deck per lecture, coverage audit. Requires Anki desktop + the Anki MCP Server add-on (124672614).",
+      "description": "Build a week's AnKing Step Deck from your lecture materials — unsuspend + tag cards, one filtered deck per lecture, coverage audit. Also builds interactive, source-grounded NBME/USMLE-style practice exams from the same materials. Deck building requires Anki desktop + the Anki MCP Server add-on (124672614); the exam builder does not.",
       "category": "productivity"
     },
     {
