@@ -74,6 +74,32 @@ Paste any of these into Claude (tweak the bracketed parts).
   touching my other MCP servers."*
 - *"I'm in Claude Code — what am I giving up by not using Cowork this week?"*
 
+## Practice exams
+
+The exam builder is the one skill here that **doesn't need Anki open** — it reads your slides and
+writes JSON, so it works in Claude, Codex, and browser ChatGPT alike.
+
+- *"Build me a [60]-question practice exam for [the cardio block] from these lectures."* (or `/practice-exam`)
+- *"Here's the distribution: [Dr. A 20, Dr. B 25, Dr. C 15]. Slides and the review deck are in [folder]."*
+- *"The counts my professor gave don't add up to the total — show me the difference before you build anything."*
+- *"Use the review questions the professors posted for style and emphasis, but write original vignettes."*
+- *"Weight it [30]% third-order — this exam is heavier than the last one."*
+
+### Taking it
+
+- *"Resume my practice exam."*  ·  *"Open [exam] in Tutor mode."*  ·  *"Timed, 60 minutes, no explanations until the end."*
+- *"Drill just the topics I've been missing."* (Weakness Drill)
+- *"Redo the questions I marked and the ones I got wrong."* (Review Marked)
+
+### After
+
+- *"Score it and show me the report by faculty and topic."*
+- *"Which misses were knowledge gaps versus misreads?"*
+- *"Turn my weak topics into a study order for the next [3] days."*
+- *"For every miss, give me the slide, the Bootcamp video, and the Anki tag — most targeted first."*
+- *"Which of these weak topics have I now missed on more than one exam?"* (cross-exam history)
+- *"Rebuild the deck for [topic] — I bombed it on the practice exam."* (hands off to `anki-week`)
+
 ## Housekeeping
 
 - *"List every custom card I've added (tag `Sched::custom`)."*
